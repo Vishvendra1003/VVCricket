@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "321250983182",
+    "project_id": "vcricket-99b35",
+    "storage_bucket": "vcricket-99b35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321250983182:android:13fee8d66aba75551e2b5f",
+        "android_client_info": {
+          "package_name": "com.torrex.vcricket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321250983182-448mer5c6qcrhpfo08ipklco0o0hv3n9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.torrex.vcricket",
+            "certificate_hash": "86ff6d1f1704643739799d4c03011621fbebf186"
+          }
+        },
+        {
+          "client_id": "321250983182-gh5aq51mqvra7ai074rkr2gvs3kkcap0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrqNRsCLOXberDK09IC9RVF5VSyuC6uq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321250983182-gh5aq51mqvra7ai074rkr2gvs3kkcap0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
