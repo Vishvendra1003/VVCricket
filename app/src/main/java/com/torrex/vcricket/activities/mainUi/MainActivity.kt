@@ -1,7 +1,9 @@
-package com.torrex.vcricket.activities
+package com.torrex.vcricket.activities.mainUi
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -11,8 +13,15 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.torrex.vcricket.R
+import com.torrex.vcricket.activities.profileUi.ProfileActivity
+import com.torrex.vcricket.constants.GlobalConstant
 import com.torrex.vcricket.databinding.ActivityMainDashboardDrawerBinding
+import com.torrex.vcricket.firebase.FireBaseUserDataBase
+import com.torrex.vcricket.models.User
+import com.torrex.vcricket.sharedpreference.SharedPreferenceConstant
+import com.torrex.vcricket.sharedpreference.UserSharedPreference
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavView.setupWithNavController(navController)
         navView.setupWithNavController(navController)
+
+        //Get User Data From firestore
+        getUserData()
     }
 
     //Option menu
@@ -54,6 +66,22 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        return if (item.itemId==R.id.action_log_out){
+            logOut()
+            true
+        } else{
+            super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun logOut() {
+        FirebaseAuth.getInstance().signOut()
+        finish()
+        startActivity(Intent(this,LoginActivity::class.java))
     }
 
     //Navigation View set Up
@@ -71,4 +99,29 @@ class MainActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
         }
     }
+
+    //Get User Data
+    private fun  getUserData(){
+        val mUserId=FirebaseAuth.getInstance().currentUser!!.uid
+        FireBaseUserDataBase().getUserFireStore(this,mUserId)
+    }
+
+    //Get USer Success
+    fun getUserSuccess(user:User){
+        if (user.profileCompleted==0){
+            val intent=Intent(this,ProfileActivity::class.java)
+            intent.putExtra(GlobalConstant.USER_MODEL_DATA,user)
+            startActivity(intent)
+        }
+        else{
+            UserSharedPreference(this).setUserSharedPref(user)
+        }
+    }
+
+    //OnResume
+    override fun onResume() {
+        getUserData()
+        super.onResume()
+    }
+
 }

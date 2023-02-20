@@ -1,9 +1,55 @@
 package com.torrex.vcricket.sharedpreference
 
-class UserSharedPreference {
+import android.content.Context
+import android.content.SharedPreferences
+import android.content.SharedPreferences.Editor
+import android.util.Log
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import com.google.firebase.auth.FirebaseUser
+import com.google.gson.Gson
+import com.torrex.vcricket.models.User
 
-    val userId:String="userId"
-    val userName:String="userName"
-    val userMobile:String="userMobile"
+open class UserSharedPreference(context: Context) {
+    private var mSharedPreference: SharedPreferences? =null
+    private var mPrefEditor: Editor?=null
+    val gson: Gson? = null
+
+
+    init {
+        if (mSharedPreference == null) {
+            mSharedPreference = context.getSharedPreferences(SharedPreferenceConstant.userSharedPref, Context.MODE_PRIVATE)
+            mPrefEditor = mSharedPreference!!.edit()
+        }
+        else{
+            mPrefEditor = mSharedPreference!!.edit()
+        }
+
+    }
+
+    //set userId for the user in shared Pref
+    fun setMUserId(userId: FirebaseUser) {
+        mPrefEditor!!.putString(SharedPreferenceConstant.userId, userId.toString())
+        mPrefEditor!!.apply()
+        //Log.v("UserSharedPreference",mSharedPreference.getString(SharedPreferenceConstant.userId,null)!!)
+    }
+
+    //get userId from shared pref
+    fun getMUserId():String{
+        return mSharedPreference!!.getString(SharedPreferenceConstant.userId,"")!!
+    }
+
+
+    fun setUserSharedPref(user:User) {
+        val jsonUser = gson!!.toJson(user)
+        mPrefEditor!!.putString(SharedPreferenceConstant.user, jsonUser)
+        mPrefEditor!!.apply()
+    }
+
+    fun getUserSharedPref():User{
+        val jsonUser= mSharedPreference!!.getString(SharedPreferenceConstant.user,null)
+        val mUser=gson!!.fromJson(jsonUser,User::class.java)
+        return mUser
+    }
+
 
 }
