@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.matches.MatchContestActivity">
+
+    <data>
+        <variable
+            name="matchContestViewModel"
+            type="com.torrex.vcricket.activities.matches.MatchContestViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/card_elevation"
+            android:layout_margin="@dimen/primary_card_layout_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rl_match_contest_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_match_contest_league_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/primary_text_box_margin"
+                        android:layout_marginTop="@dimen/primary_text_box_margin"
+                        android:layout_marginEnd="@dimen/primary_text_box_margin"
+                        android:layout_marginBottom="@dimen/primary_text_box_margin"
+                        android:text="@{matchContestViewModel.match.name}"
+                        android:textSize="@dimen/card_match_home_league_title_size" />
+                    <TextView
+                        android:id="@+id/tv_match_contest_league_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{matchContestViewModel.match.date}"
+                        android:layout_margin="@dimen/primary_text_box_margin"
+                        android:textSize="@dimen/card_match_home_league_time_size"
+                        android:layout_alignParentRight="true"                />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_match_contest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <ImageView
+                        android:id="@+id/iv_match_contest_team_1_image"
+                        android:layout_width="@dimen/card_match_home_image_size"
+                        android:layout_height="@dimen/card_match_home_image_size"
+                        android:layout_alignParentLeft="true"
+                        android:layout_margin="@dimen/primary_card_control_margin"
+                        imageFromUrl="@{matchContestViewModel.matchTeam1.img}"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_match_contest_team_1_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/primary_card_control_margin"
+                        android:layout_toRightOf="@id/iv_match_contest_team_1_image"
+                        android:text="@{matchContestViewModel.matchTeam1.shortname}"
+                        android:textSize="@dimen/card_match_home_team_code_size" />
+                    <TextView
+                        android:id="@+id/tv_match_contest_team_1_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{matchContestViewModel.matchTeam1.name}"
+                        android:textSize="@dimen/card_match_home_team_name_size"
+                        android:layout_below="@id/iv_match_contest_team_1_image"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="@dimen/primary_card_control_margin"
+                        />
+
+
+                    <TextView
+                        android:id="@+id/tv_match_contest_team_2_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{matchContestViewModel.matchTeam2.shortname}"
+                        android:textSize="@dimen/card_match_home_team_code_size"
+                        android:layout_toLeftOf="@id/iv_match_contest_team_2_image"
+                        android:layout_margin="@dimen/primary_card_control_margin"
+                        />
+
+                    <ImageView
+                        android:id="@+id/iv_match_contest_team_2_image"
+                        android:layout_height="@dimen/card_match_home_image_size"
+                        android:layout_width="@dimen/card_match_home_image_size"
+                        android:padding="@dimen/text_padding"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/primary_card_control_margin"
+                        imageFromUrl="@{matchContestViewModel.matchTeam2.img}"
+
+                        />
+                    <TextView
+                        android:id="@+id/tv_match_contest_team_2_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{matchContestViewModel.matchTeam2.name}"
+                        android:textSize="@dimen/card_match_home_team_name_size"
+                        android:layout_below="@id/iv_match_contest_team_1_image"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/primary_card_control_margin"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_match_contest_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/primary_card_layout_margin"
+            tools:listitem="@layout/match_contest_card_list">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
+</layout>

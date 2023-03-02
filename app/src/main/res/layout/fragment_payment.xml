@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragmentsUI.payment.PaymentFragment">
+
+    <data>
+        <variable
+            name="paymentViewModel"
+            type="com.torrex.vcricket.fragmentsUI.payment.PaymentViewModel" />
+        <variable
+            name="paymentFragment"
+            type="com.torrex.vcricket.fragmentsUI.payment.PaymentFragment" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_payment_balance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/card_payment_elevation"
+            android:layout_margin="@dimen/primary_card_layout_margin">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/tv_payment_balance_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/heading_3_size"
+                    android:text="@string/balance"/>
+
+                <TextView
+                    android:id="@+id/tv_payment_balance_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/heading_3_size"
+                    android:text="@{paymentViewModel.userBalance}"/>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/primary_text_box_margin">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_add_fund"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/button_margin"
+                android:text="@string/add_fund"
+                android:textSize="@dimen/button_fund_text_size"
+                android:textColor="@color/white"
+                android:background="@drawable/button_background"
+                android:clickable="true"
+                android:focusable="true"
+                />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_withdraw_fund"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/withdraw"
+                android:textSize="@dimen/button_fund_text_size"
+                android:layout_marginStart="@dimen/button_margin"
+                android:background="@drawable/button_background"
+                android:textColor="@color/white"
+                />
+
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_payment_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/payment_history_list"
+            android:visibility="visible"/>
+
+
+    </LinearLayout>
+
+</layout>
