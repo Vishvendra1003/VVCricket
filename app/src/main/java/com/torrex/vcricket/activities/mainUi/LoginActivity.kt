@@ -9,23 +9,26 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.torrex.vcricket.R
 import com.torrex.vcricket.constants.GlobalConstant
+import com.torrex.vcricket.databinding.ActivityLoginBinding
+import com.torrex.vcricket.databinding.ActivityProfileBinding
+import com.torrex.vcricket.firebase.FireBaseUserDataBase
 import com.torrex.vcricket.models.User
 import com.torrex.vcricket.modules.BaseActivity
 import com.torrex.vcricket.sharedpreference.UserSharedPreference
-import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseActivity(),View.OnClickListener {
     private val mFirebaseAuth=FirebaseAuth.getInstance()
-    val LOGIN_INTENT_CODE=1
+    private lateinit var binding:ActivityLoginBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding= ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btn_login.setOnClickListener(this)
-        tv_sign_up.setOnClickListener(this)
-        iv_login_with_phone.setOnClickListener(this)
+        binding.btnLogin.setOnClickListener(this)
+        binding.tvSignUp.setOnClickListener(this)
+        binding.ivLoginWithPhone.setOnClickListener(this)
 
 
     }
@@ -58,21 +61,22 @@ class LoginActivity : BaseActivity(),View.OnClickListener {
 
     //checking for the user registered
     private fun loginRegisteredUser() {
-        val email=et_login_email.text.toString().trim(){it<=' '}
-        val password=et_login_password.text.toString().trim(){it <=' '}
+        val email=binding.etLoginEmail.text.toString().trim(){it<=' '}
+        val password=binding.etLoginPassword.text.toString().trim(){it <=' '}
 
         //Log in user from the fireBase Auth Email
         mFirebaseAuth.signInWithEmailAndPassword(email,password)
             .addOnCompleteListener { task->
                 if (task.isSuccessful){
                     val userPref=UserSharedPreference(this)
-                    userPref.setMUserId(mFirebaseAuth.currentUser!!)
+                    userPref.setMUserId(mFirebaseAuth.currentUser!!.uid)
                     //TODO("SetUpUser Details after login")
                     Log.v("LoginActivity",mFirebaseAuth.currentUser!!.toString())
                     Toast.makeText(this,"Logged In Success!!!", Toast.LENGTH_LONG).show()
 
                     val userId=userPref.getMUserId()
                     Log.v("LoginActivity",userId.toString())
+                    FireBaseUserDataBase().getUserFireStore(this,userId)
 
                 }
             }
@@ -81,12 +85,12 @@ class LoginActivity : BaseActivity(),View.OnClickListener {
     //Method to check the required field filled or not
     private fun validateDetails():Boolean{
         return when{
-            TextUtils.isEmpty(et_login_email.text.toString().trim { it <= ' ' }) ->{
+            TextUtils.isEmpty(binding.etLoginEmail.text.toString().trim { it <= ' ' }) ->{
                 //TODO("error sneakbar")
                 Toast.makeText(this,"enter email", Toast.LENGTH_LONG).show()
                 false
             }
-            TextUtils.isEmpty(et_login_password.text.toString().trim { it<=' ' })->{
+            TextUtils.isEmpty(binding.etLoginPassword.text.toString().trim { it<=' ' })->{
                 //TODO("error sneakbar")
                 Toast.makeText(this,"enter password", Toast.LENGTH_LONG).show()
                 false

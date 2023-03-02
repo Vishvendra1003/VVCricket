@@ -2,6 +2,7 @@ package com.torrex.vcricket.activities.mainUi
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
@@ -20,13 +21,23 @@ import com.torrex.vcricket.constants.GlobalConstant
 import com.torrex.vcricket.databinding.ActivityMainDashboardDrawerBinding
 import com.torrex.vcricket.firebase.FireBaseUserDataBase
 import com.torrex.vcricket.models.User
+import com.torrex.vcricket.modules.BaseActivity
+import com.torrex.vcricket.roomDatabase.RoomDatabaseBuilder
+import com.torrex.vcricket.roomDatabase.VCricketDatabase
+import com.torrex.vcricket.roomDatabase.databaseHelper.VUserDatabaseHelper
+import com.torrex.vcricket.roomDatabase.roomModels.VUser
 import com.torrex.vcricket.sharedpreference.SharedPreferenceConstant
 import com.torrex.vcricket.sharedpreference.UserSharedPreference
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration:AppBarConfiguration
     private lateinit var binding: ActivityMainDashboardDrawerBinding
+    private var mUser:User?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +47,6 @@ class MainActivity : AppCompatActivity() {
 
         //SetUpActionBar
         setUpActionBar()
-
 
         //Setting drawer layout bottom Navigation and drawer nav view
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -59,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         //Get User Data From firestore
         getUserData()
+
     }
 
     //Option menu
@@ -69,19 +80,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
-        return if (item.itemId==R.id.action_log_out){
-            logOut()
-            true
-        } else{
-            super.onOptionsItemSelected(item)
+        when(item.itemId) {
+            R.id.action_log_out -> {
+                logOut()
+            }
+            R.id.action_user_profile -> {
+                val intent=Intent(this,ProfileActivity::class.java)
+                intent.putExtra(GlobalConstant.USER_MODEL_DATA,mUser)
+                startActivity(intent)
+            }
         }
+            return super.onOptionsItemSelected(item)
     }
 
     private fun logOut() {
         FirebaseAuth.getInstance().signOut()
-        finish()
         startActivity(Intent(this,LoginActivity::class.java))
+        finish()
     }
 
     //Navigation View set Up
@@ -108,13 +123,17 @@ class MainActivity : AppCompatActivity() {
 
     //Get USer Success
     fun getUserSuccess(user:User){
+        mUser=user
         if (user.profileCompleted==0){
             val intent=Intent(this,ProfileActivity::class.java)
-            intent.putExtra(GlobalConstant.USER_MODEL_DATA,user)
+            intent.putExtra(GlobalConstant.USER_MODEL_DATA,mUser)
             startActivity(intent)
         }
         else{
-            UserSharedPreference(this).setUserSharedPref(user)
+            UserSharedPreference(this).setUserSharedPref(mUser!!)
+            val mSharedUser=UserSharedPreference(this).getUserSharedPref()
+            Log.v("JSON_USER",mSharedUser.id)
+
         }
     }
 
@@ -122,6 +141,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         getUserData()
         super.onResume()
+    }
+
+    //OnBackPressed
+    override fun onBackPressed() {
+        doubleBackToExit()
     }
 
 }

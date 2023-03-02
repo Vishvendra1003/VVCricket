@@ -39,13 +39,13 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.torrex.vcricket.fragmentsUI.slideshow.SlideshowFragment"
+        android:name="com.torrex.vcricket.fragmentsUI.notification.NotificationFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/navigation_payment"
-        android:name="com.torrex.vcricket.fragmentsUI.slideshow.SlideshowFragment"
+        android:name="com.torrex.vcricket.fragmentsUI.payment.PaymentFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 </navigation>

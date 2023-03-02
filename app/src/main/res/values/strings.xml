@@ -6,6 +6,10 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_log_out">LogOut</string>
+    <string name="action_user_profile">Profile</string>
+
+    <string name="signIn_with_phone">SignIn With Phone</string>
+
 
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
@@ -49,5 +53,20 @@
     <string name="user_gender">Gender</string>
     <string name="edit">Edit</string>
     <string name="log_out">Log Out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="balance">Balance</string>
+    <string name="payment_history">Payment History</string>
+    <string name="add_fund">Add Fund</string>
+    <string name="enter_amount_to_add">Enter Amount To Add:</string>
+    <string name="enter_amount">Enter Amount</string>
+
+
+    <string name="withdraw">Withdraw</string>
+    <string name="account_userName">Account UserName</string>
+    <string name="account_merchant_code">Merchant Code</string>
+    <string name="enter_amount_to_withdraw">Enter Amount to WithDraw:</string>
+    <string name="withdraw_fund">WithDraw</string>
 
 </resources>

@@ -67,17 +67,19 @@
                         android:contentDescription="@string/content_description"
                         android:background="@color/light_grey"
                         android:scaleType="fitXY"
-                        android:src="@drawable/ic_baseline_person_24"/>
+                        imageFromUrl="@{profileViewModel.userProfileImage}"
+                        />
 
                     <ImageView
                         android:id="@+id/iv_user_profile_photo_edit"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        android:layout_gravity="end"
+                        android:layout_gravity="bottom"
                         android:layout_marginTop="150dp"
                         android:contentDescription="@string/content_description"
                         android:scaleType="fitXY"
-                        android:background="@color/white"
+                        android:background="#FFFFFF"
+                        android:onClick="onEditImage"
                         android:src="@drawable/ic_baseline_edit_24" />
 
                     <View
@@ -116,10 +118,11 @@
                             android:layout_height="wrap_content"
                             android:padding="@dimen/profile_text_padding"
                             android:inputType="text"
-                            android:text="@{profileViewModel.MUserLiveData.email}"
+                            android:text="@={profileViewModel.email}"
                             android:textColor="@color/black"
                             android:textSize="@dimen/input_text_size"
-                            tools:ignore="SpeakableTextPresentCheck" />
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:enabled="false"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -138,11 +141,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:text="@{profileViewModel.MUserLiveData.firstName}"
+                            android:text="@={profileViewModel.firstName}"
                             android:padding="@dimen/profile_text_padding"
                             android:textColor="@color/black"
                             android:textSize="@dimen/input_text_size"
-                            tools:ignore="SpeakableTextPresentCheck" />
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:enabled="false"/>
+
                     </com.google.android.material.textfield.TextInputLayout>
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/til_profile_last_name"
@@ -160,11 +165,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="text"
-                            android:text="@{profileViewModel.MUserLiveData.lastName}"
+                            android:text="@={profileViewModel.lastName}"
                             android:padding="@dimen/profile_text_padding"
                             android:textColor="@color/black"
                             android:textSize="@dimen/input_text_size"
-                            tools:ignore="SpeakableTextPresentCheck" />
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:enabled="false"/>
+
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -190,51 +197,71 @@
                             android:padding="@dimen/profile_text_padding"
                             android:textColor="@color/black"
                             android:textSize="@dimen/input_text_size"
-                            tools:ignore="SpeakableTextPresentCheck" />
+                            tools:ignore="SpeakableTextPresentCheck"
+                            android:enabled="false"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
-                        android:id="@+id/ll_user_profile_gender"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/layout_margin_top"
-                        android:background="@color/light_blue"
+                        android:layout_height="@dimen/primary_text_box_size"
+                        android:layout_margin="@dimen/primary_layout_margin"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/tv_user_profile_gender_title"
+                        <LinearLayout
+                            android:id="@+id/ll_user_profile_gender"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:layout_marginStart="@dimen/layout_margin_top"
-                            android:textSize="@dimen/primary_box_data_size"
-                            android:textColor="@color/white"
-                            android:text="@string/user_gender"
-                            />
-                        <TextView
-                            android:id="@+id/tv_user_profile_gender"
-                            android:layout_width="0dp"
+                            android:layout_weight="4"
+                            android:background="@drawable/button_background"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_user_profile_gender_title"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:textStyle="bold"
+                                android:layout_marginStart="@dimen/layout_margin_top"
+                                android:textSize="@dimen/button_text_size"
+                                android:background="@drawable/primary_outline_background"
+                                android:textColor="@color/white"
+                                android:text="@string/user_gender"
+                                />
+                            <TextView
+                                android:id="@+id/tv_user_profile_gender"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3"
+                                android:gravity="center"
+                                android:textStyle="italic"
+                                android:layout_marginEnd="@dimen/layout_margin_top"
+                                android:textSize="@dimen/button_text_size"
+                                android:textColor="@color/white"
+                                android:text="@={profileViewModel.userGender}"
+                                android:background="@drawable/primary_outline_background"
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:gravity="center"
-                            android:textStyle="bold"
-                            android:layout_marginEnd="@dimen/layout_margin_top"
-                            android:textSize="@dimen/primary_box_data_size"
-                            android:background="@drawable/primary_background"
-                            android:textColor="@color/white"
-                            android:text="@{profileViewModel.MUserLiveData.gender}"
-                            />
-                        <Spinner
-                            android:id="@+id/spinner_profile_gender"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            />
+                            android:background="@drawable/button_background"
+                            android:layout_marginStart="@dimen/primary_layout_margin"
+                            android:orientation="horizontal">
+
+                            <Spinner
+                                android:id="@+id/spinner_profile_gender"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:visibility="gone"
+                                />
+                        </LinearLayout>
+
+
                     </LinearLayout>
-
-
 
                 </LinearLayout>
 
@@ -246,6 +273,7 @@
                     android:layout_margin="@dimen/edit_button_top"
                     android:gravity="center"
                     android:text="@string/edit"
+                    android:onClick="onEditClick"
                     android:background="@drawable/button_background"
                     android:foreground="?attr/selectableItemBackground"
                     android:textColor="@color/white"

@@ -4,12 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".activities.mainUi.SignInOptionActivity">
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="50sp"
         android:text="SignUp"/>
+
+    <ImageView
+        android:id="@+id/iv_signIn_with_phone"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:padding="4dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/ic_baseline_local_phone_24"/>
+
+    <Button
+        android:id="@+id/btn_signIn_with_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background"
+        android:textSize="@dimen/primary_text_size"
+        android:text="@string/signIn_with_phone"
+        android:textColor="@color/white"
+        android:padding="@dimen/text_padding"
+        android:layout_margin="@dimen/primary_layout_margin"/>
 
 </LinearLayout>

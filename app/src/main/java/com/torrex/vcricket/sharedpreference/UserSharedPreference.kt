@@ -12,7 +12,7 @@ import com.torrex.vcricket.models.User
 open class UserSharedPreference(context: Context) {
     private var mSharedPreference: SharedPreferences? =null
     private var mPrefEditor: Editor?=null
-    val gson: Gson? = null
+    val gson=Gson()
 
 
     init {
@@ -27,7 +27,7 @@ open class UserSharedPreference(context: Context) {
     }
 
     //set userId for the user in shared Pref
-    fun setMUserId(userId: FirebaseUser) {
+    fun setMUserId(userId: String) {
         mPrefEditor!!.putString(SharedPreferenceConstant.userId, userId.toString())
         mPrefEditor!!.apply()
         //Log.v("UserSharedPreference",mSharedPreference.getString(SharedPreferenceConstant.userId,null)!!)
@@ -40,9 +40,10 @@ open class UserSharedPreference(context: Context) {
 
 
     fun setUserSharedPref(user:User) {
-        val jsonUser = gson!!.toJson(user)
+        val jsonUser =gson.toJson(user)
         mPrefEditor!!.putString(SharedPreferenceConstant.user, jsonUser)
         mPrefEditor!!.apply()
+
     }
 
     fun getUserSharedPref():User{

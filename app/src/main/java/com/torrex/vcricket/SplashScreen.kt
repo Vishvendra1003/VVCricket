@@ -9,6 +9,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.torrex.vcricket.activities.mainUi.LoginActivity
 import com.torrex.vcricket.activities.mainUi.MainActivity
+import com.torrex.vcricket.activities.mainUi.SignInOptionActivity
 import com.torrex.vcricket.constants.GlobalConstant
 
 class SplashScreen : AppCompatActivity() {
@@ -25,7 +26,7 @@ class SplashScreen : AppCompatActivity() {
                 startActivity(Intent(this,MainActivity::class.java))
             }
             else{
-                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(Intent(this, SignInOptionActivity::class.java))
             }
         },GlobalConstant.SPLASH_SCREEN_DELAY)
     }

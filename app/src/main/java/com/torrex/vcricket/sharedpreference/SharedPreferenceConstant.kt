@@ -10,4 +10,9 @@ object SharedPreferenceConstant {
     val userName:String="USER_NAME"
     val userMobile:String="USER_NAME"
     val user: String="USER"
+
+    //Matches information
+    val matchSharedPreference:String="MATCH_SHARED_PREFERENCE"
+    val currentMatchModelList:String="CURRENT_MATCH_MODEL_LIST"
+    val currentMatchModel:String="CURRENT_MATCH_MODEL"
 }
