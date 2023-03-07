@@ -94,4 +94,27 @@ class FireBasePaymentData {
                 }
             }
     }
+
+    //Get Transaction Data for the User
+    fun getTransactionDataForUser(fragment: Fragment,userId: String){
+        mFireStore.collection(DataBaseConstant.USER_TRANSACTION_DATA)
+            .whereEqualTo(DataBaseConstant.USERID,userId)
+            .get()
+            .addOnSuccessListener { document->
+                val paymentList:ArrayList<TransactionData> =ArrayList()
+                Log.v("TRANSACTION_DATA_USER",document.toString())
+
+                for(i in document.documents){
+                    val transactionData=i.toObject(TransactionData::class.java)
+                    paymentList.add(transactionData!!)
+                }
+                when(fragment){
+                    is PaymentFragment->{
+                        fragment.getPaymentTransactionListSuccess(paymentList)
+                    }
+                }
+
+
+            }
+    }
 }

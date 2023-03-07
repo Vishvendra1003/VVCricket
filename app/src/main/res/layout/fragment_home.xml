@@ -8,13 +8,13 @@
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_home"
+        android:id="@+id/rvHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/match_card_view"/>
 
     <TextView
-        android:id="@+id/tv_no_match"
+        android:id="@+id/tvNoMatch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

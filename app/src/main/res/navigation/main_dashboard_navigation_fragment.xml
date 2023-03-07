@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
     <fragment
@@ -19,10 +18,10 @@
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.torrex.vcricket.fragmentsUI.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_admin"
+        android:name="com.torrex.vcricket.fragmentsUI.adminAccount.AdminFragment"
+        android:label="@string/menu_admin_account"
+        tools:layout="@layout/fragment_admin" />
 
     <fragment
         android:id="@+id/navigation_home"
@@ -40,12 +39,12 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.torrex.vcricket.fragmentsUI.notification.NotificationFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:label="@string/menu_admin_account"
+        tools:layout="@layout/fragment_notification" />
 
     <fragment
         android:id="@+id/navigation_payment"
         android:name="com.torrex.vcricket.fragmentsUI.payment.PaymentFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:label="@string/title_payment"
+        tools:layout="@layout/fragment_payment" />
 </navigation>

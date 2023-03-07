@@ -4,7 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">8dp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
     <dimen name="login_frame_height">300dp</dimen>
     <dimen name="login_frame_logo_width">270dp</dimen>
     <dimen name="login_frame_logo_height">150dp</dimen>
@@ -48,7 +47,6 @@
     <dimen name="layout_date_margin_top">10dp</dimen>
     <dimen name="date_icon_size">40sp</dimen>
     <dimen name="profile_text_padding">7dp</dimen>
-    <dimen name="primary_box_data_size">20sp</dimen>
     <dimen name="edit_button_top">40dp</dimen>
     <dimen name="primary_padding">10dp</dimen>
     <dimen name="primary_text_size">22sp</dimen>
@@ -56,15 +54,18 @@
 
 
     <!--for Phone-->
-    <dimen name="heading_1_size">50sp</dimen>
     <dimen name="heading_2_size">40sp</dimen>
     <dimen name="heading_3_size">30sp</dimen>
     <dimen name="heading_4_size">20sp</dimen>
-    <dimen name="heading_5_size">15sp</dimen>
     <dimen name="card_elevation">6dp</dimen>
     <dimen name="card_payment_elevation">10dp</dimen>
 
     <dimen name="card_match_home_team_code_size">30sp</dimen>
+    <dimen name="bet_prize_size_small">40dp</dimen>
+    <dimen name="bet_margin_small">20dp</dimen>
+    <dimen name="default_layout_margin">10dp</dimen>
+    <dimen name="divider_margin">5dp</dimen>
+    <dimen name="set_contest_team_size">10sp</dimen>
 
 
 </resources>

@@ -20,7 +20,6 @@ class LoginActivity : BaseActivity(),View.OnClickListener {
     private val mFirebaseAuth=FirebaseAuth.getInstance()
     private lateinit var binding:ActivityLoginBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityLoginBinding.inflate(layoutInflater)

@@ -1,12 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <TextView
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/primary_card_layout_margin"
+    app:cardElevation="@dimen/card_elevation">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="MATCH_CONTEST"
-        android:textSize="50sp"/>
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_contest_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_amount_to_add"
+            android:textSize="@dimen/primary_text_size"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv_team1_name_match_contest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team1"
+            android:textSize="@dimen/heading_4_size"
+            android:layout_below="@id/tv_contest_heading"
+            android:layout_marginStart="@dimen/primary_layout_margin"
+            />
+        <ImageView
+            android:id="@+id/iv_team1_match_contest"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_notifications_24"
+            android:layout_below="@id/tv_team1_name_match_contest"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/primary_layout_margin"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.5"
+            android:textSize="@dimen/bet_prize_size_small"
+            android:layout_toRightOf="@id/iv_team1_match_contest"
+            android:layout_below="@id/tv_team1_name_match_contest"
+            android:layout_marginStart="@dimen/bet_margin_small"
+            android:background="@drawable/primary_outline_background"
+            android:padding="@dimen/text_padding"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bet_prize_team1"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="500"
+            android:background="@drawable/primary_outline_background"
+            android:backgroundTint="@color/extra_light_grey"
+            android:elevation="@dimen/card_elevation"
+            android:layout_below="@id/iv_team1_match_contest"
+            android:layout_marginTop="@dimen/primary_card_control_margin"
+            />
+
+        <TextView
+            android:id="@+id/tv_team2_name_match_contest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team2"
+            android:textSize="@dimen/heading_4_size"
+            android:layout_below="@id/tv_contest_heading"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="@dimen/primary_layout_margin"
+            />
+
+        <ImageView
+            android:id="@+id/iv_team2_match_contest"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_notifications_24"
+            android:layout_below="@id/tv_team2_name_match_contest"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="@dimen/primary_layout_margin"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.5"
+            android:textSize="@dimen/bet_prize_size_small"
+            android:layout_toLeftOf="@id/iv_team2_match_contest"
+            android:layout_below="@id/tv_team1_name_match_contest"
+            android:layout_marginEnd="@dimen/bet_margin_small"
+            android:background="@drawable/primary_outline_background"
+            android:padding="@dimen/text_padding"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="500"
+            android:background="@drawable/primary_outline_background"
+            android:backgroundTint="@color/extra_light_grey"
+            android:elevation="@dimen/card_elevation"
+            android:layout_below="@id/iv_team2_match_contest"
+            android:layout_marginTop="@dimen/primary_card_control_margin"
+            android:layout_alignParentRight="true"
+            />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/primary_card_control_margin"
+            android:layout_below="@id/btn_bet_prize_team1"
+            />
+    </RelativeLayout>
+
 
 </androidx.cardview.widget.CardView>

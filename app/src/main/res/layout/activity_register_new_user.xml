@@ -15,7 +15,7 @@
         >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_register_activity"
+            android:id="@+id/toolbarRegisterActivity"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,6 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
-                android:id="@+id/tv_signup_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -97,7 +96,6 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -108,7 +106,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signup_email"
+                    android:id="@+id/etSignupEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/text_padding"
@@ -120,7 +118,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_first_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +128,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_first_name"
+                    android:id="@+id/etSignUpFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -142,7 +139,6 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_last_name"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -153,7 +149,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_last_name"
+                    android:id="@+id/etSignUpLastName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -165,7 +161,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
-                android:id="@+id/rg_register_gender"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="@dimen/input_text_margin"
@@ -175,7 +170,7 @@
                 >
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rb_male"
+                    android:id="@+id/rbMale"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/gender_tab_selector"
@@ -190,7 +185,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rb_female"
+                    android:id="@+id/rbFemale"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="@string/signUP_female"
@@ -208,7 +203,6 @@
 
 
             <LinearLayout
-                android:id="@+id/ll_date_picker"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/date_text_size"
                 android:layout_marginStart="@dimen/input_text_margin"
@@ -218,7 +212,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_signUp_dob"
+                    android:id="@+id/tvSignUpDob"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:inputType="text"
@@ -241,7 +235,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_mobile"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -252,7 +245,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_mobile"
+                    android:id="@+id/etSignUpMobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -264,7 +257,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -275,7 +267,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_password"
+                    android:id="@+id/etSignUpPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -288,7 +280,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_confirm_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -299,7 +290,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_confirm_password"
+                    android:id="@+id/etSignUpConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"

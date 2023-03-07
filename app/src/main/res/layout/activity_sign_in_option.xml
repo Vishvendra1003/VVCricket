@@ -18,7 +18,7 @@
         android:text="SignUp"/>
 
     <ImageView
-        android:id="@+id/iv_signIn_with_phone"
+        android:id="@+id/ivSignInWithPhone"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:padding="4dp"
@@ -27,7 +27,7 @@
         android:src="@drawable/ic_baseline_local_phone_24"/>
 
     <Button
-        android:id="@+id/btn_signIn_with_phone"
+        android:id="@+id/btnSignInWithPhone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"

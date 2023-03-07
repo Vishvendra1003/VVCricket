@@ -15,7 +15,7 @@
         >
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_register_activity_phone"
+            android:id="@+id/toolbarRegisterActivityPhone"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,6 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <TextView
-                android:id="@+id/tv_signup_title_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -98,7 +97,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_first_name_phone"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,7 +107,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_first_name_phone"
+                    android:id="@+id/etSignUpFirstNamePhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -120,7 +118,6 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_last_name_phone"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +128,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_last_name_phone"
+                    android:id="@+id/etSignUpLastNamePhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
@@ -143,7 +140,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <RadioGroup
-                android:id="@+id/rg_register_gender_phone"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="@dimen/input_text_margin"
@@ -153,7 +149,7 @@
                 >
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rb_male_phone"
+                    android:id="@+id/rbMalePhone"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/gender_tab_selector"
@@ -168,7 +164,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/rb_female_phone"
+                    android:id="@+id/rbFemalePhone"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:text="@string/signUP_female"
@@ -186,7 +182,6 @@
 
 
             <LinearLayout
-                android:id="@+id/ll_date_picker_phone"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/date_text_size"
                 android:layout_marginStart="@dimen/input_text_margin"
@@ -196,7 +191,7 @@
                 >
 
                 <TextView
-                    android:id="@+id/tv_signUp_dob_phone"
+                    android:id="@+id/tvSignUpDobPhone"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:inputType="text"
@@ -219,7 +214,6 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_signUp_mobile_phone"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -230,7 +224,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <EditText
-                    android:id="@+id/et_signUp_mobile_phone"
+                    android:id="@+id/etSignUpMobilePhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"

@@ -55,7 +55,6 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_login_email"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -64,7 +63,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_login_email"
+                    android:id="@+id/etLoginEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/text_padding"
@@ -76,7 +75,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_login_password"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,7 +83,7 @@
                 android:textColorHint="@color/light_grey">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_login_password"
+                    android:id="@+id/etLoginPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
@@ -97,7 +95,6 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
-                android:id="@+id/ll_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/layout_margin_top"
@@ -148,7 +145,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_login_with_phone"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="4"

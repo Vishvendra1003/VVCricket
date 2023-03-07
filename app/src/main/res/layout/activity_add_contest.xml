@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.adminAccount.adminContest.AddContestActivity">
+
+    <data>
+        <variable
+            name="contestMatchViewModel"
+            type="com.torrex.vcricket.activities.adminAccount.adminContest.AddContestViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ContestName"
+            android:text="@{contestMatchViewModel.contestMatch.name}"
+            android:layout_margin="@dimen/primary_layout_margin"
+            android:textSize="@dimen/primary_text_size"/>
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/primary_padding"
+            android:background="@drawable/primary_outline_background"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_set_contest_team1_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_baseline_notifications_24"
+                    android:background="@drawable/primary_outline_background"
+                    imageFromUrl="@{contestMatchViewModel.team1.img}"
+                    />
+                <TextView
+                    android:id="@+id/tv_set_contest_vs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VS"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/primary_layout_margin"
+                    android:textSize="@dimen/heading_2_size"
+                    android:layout_toRightOf="@id/iv_set_contest_team1_img"/>
+
+                <ImageView
+                    android:id="@+id/iv_set_contest_team2_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_baseline_notifications_24"
+                    imageFromUrl="@{contestMatchViewModel.team2.img}"
+                    android:layout_toRightOf="@id/tv_set_contest_vs"
+                    android:background="@drawable/primary_outline_background"/>
+
+                <TextView
+                    android:id="@+id/tv_set_contest_team1_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Team1"
+                    android:text="@{contestMatchViewModel.team1.shortname}"
+                    android:gravity="center"
+                    android:textSize="@dimen/primary_text_size"
+                    android:layout_alignLeft="@id/iv_set_contest_team1_img"
+                    android:layout_below="@id/iv_set_contest_team1_img"/>
+
+                <TextView
+                    android:id="@+id/tv_set_contest_team2_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Team2"
+                    android:text="@{contestMatchViewModel.team2.shortname}"
+                    android:gravity="center"
+                    android:layout_below="@id/iv_set_contest_team2_img"
+                    android:layout_alignLeft="@id/iv_set_contest_team2_img"
+                    android:textSize="@dimen/primary_text_size"/>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/primary_layout_margin"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_bet_price_for_contest"
+                android:layout_marginEnd="@dimen/button_margin"
+                android:textSize="@dimen/primary_text_size"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_bet_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Price"
+                android:inputType="number"
+                android:background="@drawable/primary_outline_background"
+                android:padding="@dimen/text_padding"
+                />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_add_bet_price_to_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_margin"
+                android:src="@drawable/ic_baseline_addchart_24"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enter_total_contest_seat"
+                android:layout_marginEnd="@dimen/button_margin"
+                android:textSize="@dimen/primary_text_size"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_contest_seat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Seat"
+                android:inputType="number"
+                android:background="@drawable/primary_outline_background"
+                android:padding="@dimen/text_padding"
+                />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_add_contest_seat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/button_margin"
+                android:src="@drawable/ic_baseline_add_box_24"/>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_bet_price_list"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_margin="@dimen/primary_layout_margin"
+            android:background="@drawable/primary_outline_background"
+            android:numColumns="2"
+            />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit_contest_list_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit_contest_list"
+            android:layout_gravity="center"
+            android:background="@drawable/button_background"
+            android:textSize="@dimen/button_text_size"/>
+
+    </LinearLayout>
+
+
+</layout>

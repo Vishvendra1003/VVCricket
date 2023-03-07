@@ -14,7 +14,11 @@ class MatchContestViewModel(private val context: Context,private val vMatch:Data
     var match= MutableLiveData<Data>(vMatch)
     var matchTeam1= MutableLiveData<TeamInfo>(vMatch.teamInfo[0])
     var matchTeam2= MutableLiveData<TeamInfo>(vMatch.teamInfo[1])
+    var mDate =MutableLiveData<String>()
 
-
+    init {
+        val date=GlobalFunctions.getDateFromGMTString(vMatch.dateTimeGMT)
+        mDate.value =date
+    }
 
 }

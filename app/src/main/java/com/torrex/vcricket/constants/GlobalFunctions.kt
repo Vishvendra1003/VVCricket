@@ -8,10 +8,13 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore.Images.Media
+import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.*
 
 object GlobalFunctions {
 
@@ -64,5 +67,17 @@ object GlobalFunctions {
             }
         }
         return false
+    }
+
+    fun getDateFromGMTString(date: String):String {
+        val inputFormat= SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+        inputFormat.timeZone= TimeZone.getTimeZone("GMT")
+        val dateGMT=inputFormat.parse(date)
+
+        val outputDate= SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
+        val date=outputDate.format(dateGMT)
+        Log.v("DATE",date.toString())
+        return date.toString()
+
     }
 }

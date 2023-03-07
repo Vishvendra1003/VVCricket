@@ -25,9 +25,10 @@ class HomeMatchAdapter(private val context: Context,private val matchList:Curren
         val currentMatchModel=matchList.data[position]
         Log.v("CURRENT_TEAM",currentMatchModel.toString())
 
-        if (currentMatchModel.teamInfo.size>1){
+        if (currentMatchModel.teamInfo!=null){
             holder.binding.tvMatchHomeLeagueName.text=currentMatchModel.name
-            val date=getDateFromGMTString(currentMatchModel.dateTimeGMT)
+            //val date=getDateFromGMTString(currentMatchModel.dateTimeGMT)
+            val date =GlobalFunctions.getDateFromGMTString(currentMatchModel.dateTimeGMT)
             holder.binding.tvMatchHomeLeagueTime.text=date
 
             holder.binding.tvMatchHomeTeam1Name.text=currentMatchModel.teamInfo[0].name
@@ -53,17 +54,6 @@ class HomeMatchAdapter(private val context: Context,private val matchList:Curren
 
     }
 
-    private fun getDateFromGMTString(date: String):String {
-        val inputFormat=SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
-        inputFormat.timeZone= TimeZone.getTimeZone("GMT")
-        val dateGMT=inputFormat.parse(date)
-
-        val outputDate=SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-        val date=outputDate.format(dateGMT)
-        Log.v("DATE",date.toString())
-        return date.toString()
-
-    }
 
     override fun getItemCount(): Int {
         return matchList.data.size

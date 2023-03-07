@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.withStarted
 import com.torrex.vcricket.R
+import com.torrex.vcricket.constants.DataBaseConstant
 import com.torrex.vcricket.constants.GlobalConstant
 import com.torrex.vcricket.constants.GlobalFunctions
 import com.torrex.vcricket.databinding.ActivityAddFundBinding
@@ -32,8 +33,9 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
     private var UPITransactionRefId=""
     private val UPIMerchantCode="1003"
     private var date:Long=0
-    private val transactionType="AddFund"
+    private val transactionType=DataBaseConstant.DEPOSIT
     private var userId=""
+    private var transactionStatus=""
 
     private var initialFund=0.0
 
@@ -50,8 +52,14 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
 
         binding.btnAddAmountAddFund.setOnClickListener {
             val tAmount=binding.etAddFundEnterAmount.text.toString().trim { it<= ' ' }
-            amount=tAmount.toDouble()+0.00
-            startUPIPayment(amount.toString())
+            if (tAmount.isNotEmpty()){
+                amount=tAmount.toDouble()+0.00
+                startUPIPayment(amount.toString())
+            }
+            else{
+                showErrorSnackBar("Please enter Amount",true)
+            }
+
         }
     }
 
@@ -80,6 +88,7 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
     override fun onTransactionCancelled() {
         Toast.makeText(this,"Cancelled by user", Toast.LENGTH_SHORT).show()
         TODO("Not yet implemented")
+        transactionStatus=DataBaseConstant.CANCELLED
         hideProgressDialog()
     }
 
@@ -87,6 +96,7 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
         Log.v("TransactionDetails", transactionDetails.toString())
         hideProgressDialog()
         if (transactionDetails.transactionStatus== TransactionStatus.FAILURE){
+            transactionStatus=DataBaseConstant.FAILED
             showErrorSnackBar("Payment Failed",true)
             var _addedFund=transactionDetails.amount!!.toDouble()
             val decFormat=DecimalFormat("#.##")
@@ -95,6 +105,7 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
 
         }
         if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
+            transactionStatus=DataBaseConstant.SUCCESS
             var _addedFund=transactionDetails.amount!!.toDouble()
             val decFormat=DecimalFormat("#.##")
             val addedFund=decFormat.format(_addedFund).toDouble()
@@ -130,7 +141,8 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
             amount,
             UPIMerchantCode,
             UPIDescription,
-            transactionType )
+            transactionType,
+            transactionStatus)
         FireBasePaymentData().storeTransactionDetails(this,transactionData)
     }
 

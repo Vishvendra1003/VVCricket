@@ -8,6 +8,7 @@ import android.view.MenuItem
 import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -45,6 +46,7 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainDashboardDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         //SetUpActionBar
         setUpActionBar()
 
@@ -59,7 +61,7 @@ class MainActivity : BaseActivity() {
         //appBarConfiguration for all fragment Id and drawer layout
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home,R.id.nav_gallery,R.id.nav_slideshow, //drawer fragments
+                R.id.nav_home,R.id.nav_gallery,R.id.nav_admin, //drawer fragments
                 R.id.navigation_home, R.id.navigation_account, R.id.navigation_payment,R.id.navigation_notifications //bottom navigation fragments
             ),drawerLayout
         )

@@ -9,11 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.torrex.vcricket.R
 import com.torrex.vcricket.activities.payment.AddFundActivity
 import com.torrex.vcricket.activities.payment.WithDrawFundActivity
 import com.torrex.vcricket.databinding.FragmentPaymentBinding
 import com.torrex.vcricket.firebase.FireBasePaymentData
+import com.torrex.vcricket.models.payment.TransactionData
 import com.torrex.vcricket.models.payment.UserFund
 import com.torrex.vcricket.modules.BaseFragment
 import com.torrex.vcricket.sharedpreference.UserSharedPreference
@@ -21,6 +23,7 @@ import com.torrex.vcricket.sharedpreference.UserSharedPreference
 class PaymentFragment : BaseFragment() {
     private lateinit var binding:FragmentPaymentBinding
     private lateinit var paymentViewModel:PaymentViewModel
+    var paymentHistoryList=ArrayList<TransactionData>()
 
 
     override fun onCreateView(
@@ -46,6 +49,7 @@ class PaymentFragment : BaseFragment() {
 
     private fun withDraw() {
         val intent=Intent(requireActivity(),WithDrawFundActivity::class.java)
+        startActivity(intent)
     }
 
 
@@ -55,6 +59,7 @@ class PaymentFragment : BaseFragment() {
 
     }
 
+    //Get User fund
     private fun getUserAmount(){
         val userId=UserSharedPreference(requireActivity()).getUserSharedPref().id
         val userFund=FireBasePaymentData().getUserFund(this,userId)
@@ -65,10 +70,34 @@ class PaymentFragment : BaseFragment() {
         paymentViewModel.setUserAmount(userFund)
     }
 
+    //Get User Transaction-----------------
+    private fun getPaymentHistory(){
+        val userId=UserSharedPreference(requireActivity()).getUserSharedPref().id
+        FireBasePaymentData().getTransactionDataForUser(this,userId)
+    }
+
+    fun getPaymentTransactionListSuccess(paymentList:ArrayList<TransactionData>){
+        paymentHistoryList=paymentList
+        setUpRecycleViewList(paymentHistoryList)
+    }
+
+    private fun setUpRecycleViewList(paymentList: ArrayList<TransactionData>) {
+        if (paymentList.isNotEmpty()){
+            val paymentRecyclerView=binding.rvPaymentHistory
+            paymentRecyclerView.layoutManager=LinearLayoutManager(requireActivity())
+            paymentRecyclerView.adapter=PaymentHistoryAdapter(requireContext(),paymentList)
+            paymentRecyclerView.setHasFixedSize(true)
+
+            //TODO("Set click functionality")
+        }
+    }
+
+
     override fun onResume() {
         super.onResume()
         showProgressDialog("Loading...")
         getUserAmount()
+        getPaymentHistory()
     }
 
 

@@ -11,6 +11,7 @@ data class TransactionData(
     val amount:Double=0.00,
     val payeeMerchantCode:String="",
     val despription:String="",
-    val transactionType:String=""
+    val transactionType:String="",
+    val transactionStatus:String=""
 
 )

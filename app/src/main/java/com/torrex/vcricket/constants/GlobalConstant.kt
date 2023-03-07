@@ -19,4 +19,6 @@ object GlobalConstant {
     //Constant String Values
     const val MALE:String="male"
     const val FEMALE:String="female"
+
+
 }
