@@ -14,7 +14,7 @@ class AddContestViewModel(private val context: Context):ViewModel() {
     var contestMatch= MutableLiveData<Data>()
     var team1=MutableLiveData<TeamInfo>()
     var team2=MutableLiveData<TeamInfo>()
-    var betPriceList=MutableLiveData<List<String>>()
+    var betPriceList=MutableLiveData<ArrayList<MatchContest>>()
     var contestList=MutableLiveData<ArrayList<MatchContest>>()
 
 

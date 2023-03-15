@@ -24,6 +24,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/card_gradient_opposite_background"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -34,25 +35,27 @@
 
                     <TextView
                         android:id="@+id/tv_match_contest_league_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="240dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="@dimen/primary_text_box_margin"
                         android:layout_marginTop="@dimen/primary_text_box_margin"
                         android:layout_marginEnd="@dimen/primary_text_box_margin"
                         android:layout_marginBottom="@dimen/primary_text_box_margin"
+                        android:hint="Match Namehbhhjjhgjhgjhgggjcgjkgjkfg"
                         android:text="@{matchContestViewModel.match.name}"
-                        android:hint="Match Name"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/card_match_home_league_title_size" />
                     <TextView
                         android:id="@+id/tv_match_contest_league_time"
-                        android:layout_width="wrap_content"
+                        android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:text="@{matchContestViewModel.MDate}"
                         android:hint="date"
                         android:layout_margin="@dimen/primary_text_box_margin"
                         android:textSize="@dimen/card_match_home_league_time_size"
-                        android:layout_alignParentRight="true"                />
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/white"/>
 
                 </RelativeLayout>
 
@@ -77,6 +80,7 @@
                         android:layout_height="wrap_content"
                         android:hint="T1"
                         android:layout_margin="@dimen/primary_card_control_margin"
+                        android:textColor="@color/white"
                         android:layout_toRightOf="@id/iv_match_contest_team_1_image"
                         android:text="@{matchContestViewModel.matchTeam1.shortname}"
                         android:textSize="@dimen/card_match_home_team_code_size" />
@@ -87,6 +91,7 @@
                         android:text="@{matchContestViewModel.matchTeam1.name}"
                         android:textSize="@dimen/card_match_home_team_name_size"
                         android:hint="Team Name"
+                        android:textColor="@color/white"
                         android:layout_below="@id/iv_match_contest_team_1_image"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="@dimen/primary_card_control_margin"
@@ -98,6 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="T2"
+                        android:textColor="@color/white"
                         android:text="@{matchContestViewModel.matchTeam2.shortname}"
                         android:textSize="@dimen/card_match_home_team_code_size"
                         android:layout_toLeftOf="@id/iv_match_contest_team_2_image"
@@ -121,6 +127,7 @@
                         android:text="@{matchContestViewModel.matchTeam2.name}"
                         android:textSize="@dimen/card_match_home_team_name_size"
                         android:hint="Team Name2"
+                        android:textColor="@color/white"
                         android:layout_below="@id/iv_match_contest_team_1_image"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="@dimen/primary_card_control_margin"

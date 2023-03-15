@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.torrex.vcricket.R
+import com.torrex.vcricket.adapters.contestAdapter.ContestListAdapter
 import com.torrex.vcricket.databinding.ActivityAddContestBinding
 import com.torrex.vcricket.firebase.FireBaseContest
 import com.torrex.vcricket.models.contests.MatchContest
@@ -21,7 +22,7 @@ class AddContestActivity : BaseActivity() {
 
     private lateinit var binding:ActivityAddContestBinding
     private lateinit var addContestViewModel:AddContestViewModel
-    var betPriceList=ArrayList<String>()
+    var betPriceList=ArrayList<MatchContest>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +52,7 @@ class AddContestActivity : BaseActivity() {
 
         addContestViewModel.contestList.observe(this, Observer {
             for(i in it){
-                betPriceList.add(i.contestBetPrice.toString())
+                betPriceList.add(i)
             }
             addContestViewModel.betPriceList.value=betPriceList
         })
@@ -65,8 +66,8 @@ class AddContestActivity : BaseActivity() {
 
     private fun setUpGridView() {
         val betPriceListView=binding.lvBetPriceList
-        val gridAdapter=ArrayAdapter(this,android.R.layout.simple_list_item_1,betPriceList)
-        betPriceListView.adapter=gridAdapter
+        val listAdapter=ContestListAdapter(this,betPriceList)
+        betPriceListView.adapter=listAdapter
     }
 
     //contest Saved Successfully
@@ -82,8 +83,9 @@ class AddContestActivity : BaseActivity() {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         finish()
+        super.onBackPressed()
+
     }
 
     override fun onResume() {

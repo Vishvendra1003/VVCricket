@@ -3,7 +3,6 @@ package com.torrex.vcricket.fragmentsUI.home
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.torrex.vcricket.constants.GlobalConstant
@@ -11,6 +10,8 @@ import com.torrex.vcricket.constants.GlobalFunctions
 import com.torrex.vcricket.databinding.MatchCardViewBinding
 import com.torrex.vcricket.models.currentMatch.CurrentMatchModel
 import com.torrex.vcricket.models.currentMatch.Data
+import com.torrex.vcricket.models.currentMatch.TeamInfo
+import com.torrex.vcricket.sharedpreference.SharedPreferenceConstant.currentMatchModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -26,23 +27,27 @@ class HomeMatchAdapter(private val context: Context,private val matchList:Curren
         Log.v("CURRENT_TEAM",currentMatchModel.toString())
 
         if (currentMatchModel.teamInfo!=null){
-            holder.binding.tvMatchHomeLeagueName.text=currentMatchModel.name
-            //val date=getDateFromGMTString(currentMatchModel.dateTimeGMT)
-            val date =GlobalFunctions.getDateFromGMTString(currentMatchModel.dateTimeGMT)
-            holder.binding.tvMatchHomeLeagueTime.text=date
+            if (currentMatchModel.teamInfo.size>1){
+                holder.binding.tvMatchHomeLeagueName.text=currentMatchModel.name
+                //val date=getDateFromGMTString(currentMatchModel.dateTimeGMT)
+                val date =GlobalFunctions.getDateFromGMTString(currentMatchModel.dateTimeGMT)
+                holder.binding.tvMatchHomeLeagueTime.text=date
 
-            holder.binding.tvMatchHomeTeam1Name.text=currentMatchModel.teamInfo[0].name
-            holder.binding.tvMatchHomeTeam1Code.text=currentMatchModel.teamInfo[0].shortname
-            holder.binding.tvMatchHomeTeam2Name.text=currentMatchModel.teamInfo[1].name
-            holder.binding.tvMatchHomeTeam2Code.text=currentMatchModel.teamInfo[1].shortname
+                holder.binding.tvMatchHomeTeam1Name.text=currentMatchModel.teamInfo[0].name
+                holder.binding.tvMatchHomeTeam1Code.text=currentMatchModel.teamInfo[0].shortname
+                holder.binding.tvMatchHomeTeam2Name.text=currentMatchModel.teamInfo[1].name
+                holder.binding.tvMatchHomeTeam2Code.text=currentMatchModel.teamInfo[1].shortname
 
-            val teamImg1=currentMatchModel.teamInfo[0]?.img
-            val teamImg2=currentMatchModel.teamInfo[1].img
+                    val teamImg1=currentMatchModel.teamInfo[0]?.img
+                    val teamImg2=currentMatchModel.teamInfo[1].img
 
-            if (teamImg1!=null && teamImg2!=null){
-                GlobalFunctions.loadUserPicture(context,teamImg1,holder.binding.ivMatchHomeTeam1Image)
-                GlobalFunctions.loadUserPicture(context,teamImg2,holder.binding.ivMatchHomeTeam2Image)
+                    if (teamImg1!=null && teamImg2!=null){
+                        GlobalFunctions.loadUserPicture(context,teamImg1,holder.binding.ivMatchHomeTeam1Image)
+                        GlobalFunctions.loadUserPicture(context,teamImg2,holder.binding.ivMatchHomeTeam2Image)
+                    }
+
             }
+
         }
 
         //on click Listener------
@@ -53,6 +58,7 @@ class HomeMatchAdapter(private val context: Context,private val matchList:Curren
         }
 
     }
+
 
 
     override fun getItemCount(): Int {

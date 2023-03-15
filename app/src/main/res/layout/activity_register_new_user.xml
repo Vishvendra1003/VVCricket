@@ -103,7 +103,7 @@
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:backgroundTint="@color/app_background"
                 android:hint="@string/signUp_email"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignupEmail"
@@ -125,7 +125,7 @@
                 android:backgroundTint="@color/app_background"
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:hint="@string/first_name"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpFirstName"
@@ -146,7 +146,7 @@
                 android:backgroundTint="@color/app_background"
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:hint="@string/last_name"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpLastName"
@@ -242,7 +242,7 @@
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:backgroundTint="@color/app_background"
                 android:hint="@string/user_mob"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpMobile"
@@ -264,7 +264,7 @@
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:backgroundTint="@color/app_background"
                 android:hint="@string/user_password"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpPassword"
@@ -287,7 +287,7 @@
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:backgroundTint="@color/app_background"
                 android:hint="@string/user_confirm_password"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpConfirmPassword"

@@ -2,6 +2,7 @@ package com.torrex.vcricket.activities.profileUi
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -18,7 +19,9 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.torrex.vcricket.R
+import com.torrex.vcricket.activities.mainUi.LoginActivity
 import com.torrex.vcricket.activities.mainUi.MainActivity
 import com.torrex.vcricket.constants.DataBaseConstant
 import com.torrex.vcricket.constants.GlobalConstant
@@ -81,7 +84,8 @@ class ProfileActivity : BaseActivity(),
                 binding.etProfileFirstName.isEnabled=true
                 binding.etProfileLastName.isEnabled=true
                 binding.etProfileMobile.isEnabled=false
-                binding.spinnerProfileGender.visibility=View.VISIBLE
+                //binding.spinnerProfileGender.visibility=View.VISIBLE
+                binding.llSpinner.visibility=View.VISIBLE
 
                 binding.btnProfileEdit.setText("Save")
             }
@@ -102,7 +106,26 @@ class ProfileActivity : BaseActivity(),
                 Toast.makeText(this,"Save Clicked",Toast.LENGTH_SHORT).show()
             }
         }
+    }
 
+    //OnLogOut Clicked
+
+    fun onLoOut(view: View?){
+        if (view==binding.llProfileLogout){
+            val dialog = AlertDialog.Builder(this).setTitle("LogOut")
+                .setMessage(R.string.message_log_out)
+            dialog.setPositiveButton("Yes"){dialogInterface,which->
+                showProgressDialog("Logging Out")
+                FirebaseAuth.getInstance().signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+            dialog.setNegativeButton("No"){dialogInterface,which->
+                Log.v("Dialog","Dialog Dismissed")
+            }
+            dialog.setCancelable(false)
+            dialog.show()
+        }
     }
 
     //ONImage Edit Button Clicked

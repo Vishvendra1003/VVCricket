@@ -104,7 +104,7 @@
                 android:backgroundTint="@color/app_background"
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:hint="@string/first_name"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpFirstNamePhone"
@@ -125,7 +125,7 @@
                 android:backgroundTint="@color/app_background"
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:hint="@string/last_name"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpLastNamePhone"
@@ -221,7 +221,7 @@
                 android:layout_marginTop="@dimen/signUp_margin_top"
                 android:backgroundTint="@color/app_background"
                 android:hint="@string/user_mob"
-                android:textColorHint="@color/light_grey">
+                android:textColorHint="@color/light_primary_blue">
 
                 <EditText
                     android:id="@+id/etSignUpMobilePhone"

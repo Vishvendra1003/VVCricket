@@ -19,13 +19,13 @@
 
             <TextView
                 android:id="@+id/tvMatchHomeLeagueName"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/primary_text_box_margin"
-                android:layout_marginTop="@dimen/primary_text_box_margin"
+                android:layout_marginTop="@dimen/recycle_control_margin_small"
                 android:layout_marginEnd="@dimen/primary_text_box_margin"
-                android:layout_marginBottom="@dimen/primary_text_box_margin"
+                android:layout_marginBottom="@dimen/recycle_control_margin_small"
                 android:text="Team"
                 android:textSize="@dimen/card_match_home_league_title_size" />
             <TextView
@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TIME_DATE"
-                android:layout_margin="@dimen/primary_text_box_margin"
+                android:layout_margin="@dimen/recycle_control_margin_small"
                 android:textSize="@dimen/card_match_home_league_time_size"
                 android:layout_alignParentRight="true"                />
 
@@ -50,6 +50,7 @@
                 android:layout_height="@dimen/card_match_home_image_size"
                 android:layout_alignParentLeft="true"
                 android:layout_margin="@dimen/primary_card_control_margin"
+
                 />
 
             <TextView

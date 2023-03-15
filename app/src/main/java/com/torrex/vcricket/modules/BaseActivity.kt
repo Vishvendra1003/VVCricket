@@ -1,5 +1,6 @@
 package com.torrex.vcricket.modules
 
+import android.Manifest
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -8,6 +9,7 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -16,12 +18,16 @@ import android.os.PersistableBundle
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.getSystemService
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.snackbar.Snackbar
 import com.torrex.vcricket.R
+import com.torrex.vcricket.fragmentsUI.home.HomeFragment
 import java.util.Calendar
 
 open class BaseActivity: AppCompatActivity() {
@@ -32,7 +38,7 @@ open class BaseActivity: AppCompatActivity() {
     val CHANNEL_ID="VCRICKET"
     val CHANNEL_NAME="VCRICKET CHANNEL"
     val CHANNEL_DESCRIPTION="VCRICKET NOTIFICATION"
-
+    val HOME_FRAGMENT="homeFragment"
 
     //Progress Bar
     fun showProgressDialog(text:String){
@@ -51,18 +57,18 @@ open class BaseActivity: AppCompatActivity() {
     }
 
     fun doubleBackToExit(){
+
         if (doubleBackToExitPressedOnce){
-            finish()
-            super.getOnBackPressedDispatcher()
-            return
+                finish()
+                super.getOnBackPressedDispatcher()
+                return
         }
-        this.doubleBackToExitPressedOnce=true
         Toast.makeText(this,resources.getString(R.string.please_click_back_again_to_exit), Toast.LENGTH_SHORT).show()
+        doubleBackToExitPressedOnce=true
 
         Handler(Looper.getMainLooper()).postDelayed({
             doubleBackToExitPressedOnce=false },2000)
-
-    }
+}
 
     //Function for error Snackbar
     fun showErrorSnackBar(message:String,errorMessage:Boolean){
@@ -105,6 +111,20 @@ open class BaseActivity: AppCompatActivity() {
             .setAutoCancel(true)
             .build()
         val notificationManager=NotificationManagerCompat.from(this)
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
         notificationManager.notify(1,notifyBuilder)
     }
 

@@ -1,5 +1,9 @@
 package com.torrex.vcricket.models.contests
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class MatchContest(
     val matchId:String="",
     val contestName:String="",
@@ -11,5 +15,6 @@ data class MatchContest(
     val contestTeam2BetPrice:Double=0.0,
     val contestTotalSeat:Int=0,
     val contestSeatLeft:Int=0,
-    val contestBetPrice:Int=0
-)
+    val contestBetPrice:Int=0,
+    val contestId:String=""
+):Parcelable

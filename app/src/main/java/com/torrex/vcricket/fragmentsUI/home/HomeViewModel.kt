@@ -10,6 +10,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.torrex.vcricket.constants.GlobalFunctions
 import com.torrex.vcricket.models.currentMatch.CurrentMatchModel
+import com.torrex.vcricket.models.currentMatch.Data
 import com.torrex.vcricket.modules.BaseActivity
 import com.torrex.vcricket.retrofitData.RetrofitHelper
 import com.torrex.vcricket.retrofitData.VCricketApi
@@ -40,16 +41,28 @@ class HomeViewModel(private val context: Context) : ViewModel() {
                     Callback<CurrentMatchModel>{
 
                     override fun onResponse(call: Call<CurrentMatchModel>, response: Response<CurrentMatchModel>) {
-                        if (response?.body()!=null){
+                        if (response.body() !=null){
                             Log.v("JSON_RESPONSE_MATCH",response.body().toString())
                             val response=response.body()
-                            _currentMatchList.value=response
-                            MatchSharedPreference(context).saveCurrentMatchListOffLine(response!!)
+
+                            val _matchList=response!!.data
+                            var matchList=ArrayList<Data>()
+                            for(i in _matchList){
+                                    if (i.teamInfo!=null){
+                                        if (i.teamInfo.size>1){
+                                            matchList.add(i)
+                                        }
+                                    }
+                                }
+                            _currentMatchList.value=CurrentMatchModel(response.apikey,matchList,response.info,response.status)
+                            Log.v("CURRENT_MATCH_LIST_HOME",_currentMatchList.value.toString())
+                            MatchSharedPreference(context).saveCurrentMatchListOffLine(_currentMatchList.value!!)
                         }
                     }
 
                     override fun onFailure(call: Call<CurrentMatchModel>, t: Throwable) {
                         Log.v("JSON_API_ERROR",t.message.toString())
+                        _currentMatchList.value=MatchSharedPreference(context).getCurrentMatchListOffLine()
                     }
                 })
             }

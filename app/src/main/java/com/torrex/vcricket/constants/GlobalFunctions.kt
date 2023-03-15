@@ -3,6 +3,7 @@ package com.torrex.vcricket.constants
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
@@ -11,6 +12,7 @@ import android.provider.MediaStore.Images.Media
 import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.ImageView
+import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
 import java.io.IOException
 import java.text.SimpleDateFormat
@@ -79,5 +81,19 @@ object GlobalFunctions {
         Log.v("DATE",date.toString())
         return date.toString()
 
+    }
+
+
+    //Function to check Location Permission
+    fun checkLocationPermission(context: Context):Boolean{
+        return if (ActivityCompat.checkSelfPermission(context,android.Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(context,android.Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED)
+        {
+            ActivityCompat.requestPermissions(context as Activity, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION,android.Manifest.permission.ACCESS_COARSE_LOCATION),GlobalConstant.LOCATION_PERMISSION)
+            false
+        }
+        else{
+            true
+        }
     }
 }

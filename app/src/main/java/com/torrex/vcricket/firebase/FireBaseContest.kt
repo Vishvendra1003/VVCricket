@@ -3,6 +3,8 @@ package com.torrex.vcricket.firebase
 import android.app.Activity
 import android.util.Log
 import com.torrex.vcricket.activities.adminAccount.adminContest.AddContestActivity
+import com.torrex.vcricket.activities.joinContest.JoinAndPayContestActivity
+import com.torrex.vcricket.activities.matches.MatchContestActivity
 import com.torrex.vcricket.constants.DataBaseConstant
 import com.torrex.vcricket.firebase.FirebaseStoreClass.mFireStore
 import com.torrex.vcricket.models.contests.MatchContest
@@ -14,10 +16,30 @@ class FireBaseContest {
         mFireStore.collection(DataBaseConstant.MATCH_CONTEST)
             .add(contest)
             .addOnSuccessListener { it->
-                activity.contestSavedSuccessfully()
+                val documentId=it.id
+                mFireStore.collection(DataBaseConstant.MATCH_CONTEST)
+                    .document(documentId).update(DataBaseConstant.CONTEST_ID,documentId)
+                    .addOnSuccessListener {
+                        activity.contestSavedSuccessfully()
+                    }
             }
             .addOnFailureListener {
                 Log.v("SAVE_CONTEST_ERROR",it.toString())
+            }
+    }
+
+    //function to update match contest
+    fun updateContestMatch(activity: Activity,contestId:String,betRateHashMap:HashMap<String,Any>){
+        mFireStore.collection(DataBaseConstant.MATCH_CONTEST)
+            .document(contestId)
+            .update(betRateHashMap)
+            .addOnSuccessListener {
+                when(activity){
+
+                    is JoinAndPayContestActivity->{
+                        activity.updateContestMatchSuccess()
+                    }
+                }
             }
     }
 
@@ -36,6 +58,9 @@ class FireBaseContest {
                 }
                 when(activity){
                     is AddContestActivity->{
+                        activity.getContestListSuccess(contestList)
+                    }
+                    is MatchContestActivity->{
                         activity.getContestListSuccess(contestList)
                     }
                 }

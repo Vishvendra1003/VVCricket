@@ -35,4 +35,9 @@ object DataBaseConstant {
     //constant for the field of match Contest
     const val MATCH_ID:String="matchId"
     const val CONTEST_ID:String="contestId"
+    const val BET_RATE_TEAM_1="contestTeam1BetPrice"
+    const val BET_RATE_TEAM_2="contestTeam2BetPrice"
+    const val BET_CONTEST_SEAT_LEFT="contestSeatLeft"
+    const val BET_CONTEST_TOTAL_SEAT="contestTotalSeat"
+
 }

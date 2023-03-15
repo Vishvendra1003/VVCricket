@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.joinContest.JoinAndPayContestActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_join_and_pay"
+            style="@style/Widget.MaterialComponents.Toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/join_contest_pay"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="@dimen/join_and_pay_toolbar_text_size"/>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/primary_card_layout_margin"
+            app:cardElevation="@dimen/card_payment_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/primary_layout_margin"
+                android:background="@drawable/primary_outline_background"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_join_pay_team_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="TeamName"
+                    android:layout_margin="@dimen/bet_margin_small"
+                    android:textSize="@dimen/join_pay_team_title_text_size"/>
+
+                <ImageView
+                    android:id="@+id/iv_join_and_pay_team_image"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_baseline_notifications_24"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tv_join_and_pay_contest_price"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="@dimen/join_and_pay_heading2_size"
+                        android:textSize="@dimen/join_and_pay_heading3_size"
+                        android:gravity="center"
+                        android:layout_margin="@dimen/bet_margin_small"
+                        android:background="@drawable/primary_outline_background"
+                        android:hint="Contest"/>
+
+                    <TextView
+                        android:id="@+id/tv_join_and_pay_bet_rate_price"
+                        android:layout_width="50dp"
+                        android:gravity="center"
+                        android:layout_height="50dp"
+                        android:background="@drawable/primary_circular_outline_background"
+                        android:layout_margin="@dimen/bet_margin_small"
+                        android:textSize="@dimen/join_and_pay_heading3_size"
+                        android:hint="1.2"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_pay_and_join_contest"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/bet_margin_small"
+                        android:background="@drawable/button_background"
+                        android:text="@string/join_and_pay"/>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</layout>

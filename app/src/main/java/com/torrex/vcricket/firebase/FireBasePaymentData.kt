@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.SetOptions
 import com.google.firebase.firestore.ktx.toObject
+import com.torrex.vcricket.activities.joinContest.JoinAndPayContestActivity
 import com.torrex.vcricket.activities.payment.AddFundActivity
 import com.torrex.vcricket.constants.DataBaseConstant
 import com.torrex.vcricket.constants.GlobalConstant
@@ -48,6 +49,10 @@ class FireBasePaymentData {
                     is AddFundActivity->{
                         activity.getUserFundSuccess(userFund!!)
                     }
+
+                    is JoinAndPayContestActivity->{
+                        activity.getUserFundSuccess(userFund!!)
+                    }
                 }
             }
             .addOnFailureListener{e->
@@ -63,6 +68,9 @@ class FireBasePaymentData {
                 when(activity){
                     is AddFundActivity->{
                         activity.fundUpdatedSuccessfully(totalUserFund)
+                    }
+                    is JoinAndPayContestActivity->{
+                        activity.funUpdatedSuccessfully()
                     }
                 }
             }

@@ -56,5 +56,10 @@ class ContestListAdminActivity : BaseActivity() {
         getMatchListFromStorage()
     }
 
+    override fun onBackPressed() {
+        finish()
+        super.onBackPressed()
+    }
+
 
 }

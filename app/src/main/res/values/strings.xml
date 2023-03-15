@@ -4,6 +4,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_log_out">LogOut</string>
+    <string name="message_log_out">Are You Sure to LogOut</string>
     <string name="action_user_profile">Profile</string>
 
     <string name="signIn_with_phone">SignIn With Phone</string>
@@ -47,6 +48,8 @@
     <string name="add_fund">Add Fund</string>
     <string name="enter_amount_to_add">Enter Amount To Add:</string>
     <string name="enter_amount">Enter Amount</string>
+    <string name="insufficient_balance_title">Insufficient Balance</string>
+    <string name="insufficient_balance_message">Insufficient Balance Please Add Fund To Your Account</string>
 
 
     <string name="withdraw">Withdraw</string>
@@ -58,5 +61,7 @@
     <string name="enter_bet_price_for_contest">Enter Bet Price : </string>
     <string name="submit_contest_list">Submit ContestList</string>
     <string name="enter_total_contest_seat">Enter Total Contest Seat</string>
+    <string name="join_and_pay">Pay and Join</string>
+    <string name="join_contest_pay">Join Contest</string>
 
 </resources>

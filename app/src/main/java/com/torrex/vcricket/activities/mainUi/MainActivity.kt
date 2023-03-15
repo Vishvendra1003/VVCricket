@@ -1,15 +1,22 @@
 package com.torrex.vcricket.activities.mainUi
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -19,8 +26,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.torrex.vcricket.R
 import com.torrex.vcricket.activities.profileUi.ProfileActivity
 import com.torrex.vcricket.constants.GlobalConstant
+import com.torrex.vcricket.constants.GlobalFunctions
 import com.torrex.vcricket.databinding.ActivityMainDashboardDrawerBinding
 import com.torrex.vcricket.firebase.FireBaseUserDataBase
+import com.torrex.vcricket.fragmentsUI.adminAccount.AdminFragment
+import com.torrex.vcricket.fragmentsUI.home.HomeFragment
 import com.torrex.vcricket.models.User
 import com.torrex.vcricket.modules.BaseActivity
 import com.torrex.vcricket.roomDatabase.RoomDatabaseBuilder
@@ -69,6 +79,7 @@ class MainActivity : BaseActivity() {
         bottomNavView.setupWithNavController(navController)
         navView.setupWithNavController(navController)
 
+
         //Get User Data From firestore
         getUserData()
 
@@ -95,10 +106,22 @@ class MainActivity : BaseActivity() {
             return super.onOptionsItemSelected(item)
     }
 
+
     private fun logOut() {
-        FirebaseAuth.getInstance().signOut()
-        startActivity(Intent(this,LoginActivity::class.java))
-        finish()
+        val dialog =AlertDialog.Builder(this).setTitle("LogOut")
+            .setMessage(R.string.message_log_out)
+        dialog.setPositiveButton("Yes"){dialogInterface,which->
+            showProgressDialog("Logging Out")
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this,LoginActivity::class.java))
+            finish()
+        }
+        dialog.setNegativeButton("No"){dialogInterface,which->
+            Log.v("Dialog","Dialog Dismissed")
+        }
+        dialog.setCancelable(false)
+        dialog.show()
+
     }
 
     //Navigation View set Up
@@ -126,6 +149,9 @@ class MainActivity : BaseActivity() {
     //Get USer Success
     fun getUserSuccess(user:User){
         mUser=user
+
+        setUpUserProfile()
+
         if (user.profileCompleted==0){
             val intent=Intent(this,ProfileActivity::class.java)
             intent.putExtra(GlobalConstant.USER_MODEL_DATA,mUser)
@@ -139,6 +165,16 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    private fun setUpUserProfile() {
+        //Disable and able Navigation View for User
+        binding.navView.menu.findItem(R.id.nav_admin).isVisible = GlobalConstant.ADMIN_USER.contains(mUser!!.id)
+        GlobalFunctions.loadUserPicture(this,mUser!!.image,binding.drawerLayout.findViewById(R.id.iv_drawer_profile_image))
+        val userName:TextView=binding.drawerLayout.findViewById(R.id.tv_drawer_user_name)
+        val userMobile:TextView=binding.drawerLayout.findViewById(R.id.tv_drawer_user_mobile)
+        userMobile.text= mUser!!.mobile.toString()
+        userName.text=mUser!!.firstName
+    }
+
     //OnResume
     override fun onResume() {
         getUserData()
@@ -147,7 +183,19 @@ class MainActivity : BaseActivity() {
 
     //OnBackPressed
     override fun onBackPressed() {
-        doubleBackToExit()
+        //check for home fragment
+        val fragment=this.supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+        val currentFragment= fragment!!.childFragmentManager.fragments[0]
+        if (currentFragment is HomeFragment){
+            doubleBackToExit()
+        }
+        else{
+            //TODO("navigate to home fragment first")
+            val navController = findNavController(R.id.nav_host_fragment_content_main)
+            //navController.navigate(R.id.action_nav_to_navigation_home)
+            navController.popBackStack()
+
+        }
     }
 
 }

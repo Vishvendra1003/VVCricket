@@ -26,9 +26,9 @@ import java.util.Date
 class AddFundActivity : BaseActivity(),PaymentStatusListener{
 
     private var amount:Double=0.00
-    private val UPIId="8840344272@paytm"
+    private val UPIId="paytmqr1qvrkpqwwx@paytm"
     private val UPIName="Vishvendra"
-    private val UPIDescription="Payment to 8840344272"
+    private val UPIDescription="Payment to PratapDeveloperSolution"
     private var UPITransactionID=""
     private var UPITransactionRefId=""
     private val UPIMerchantCode="1003"
@@ -87,7 +87,7 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
 
     override fun onTransactionCancelled() {
         Toast.makeText(this,"Cancelled by user", Toast.LENGTH_SHORT).show()
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
         transactionStatus=DataBaseConstant.CANCELLED
         hideProgressDialog()
     }
@@ -98,10 +98,7 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
         if (transactionDetails.transactionStatus== TransactionStatus.FAILURE){
             transactionStatus=DataBaseConstant.FAILED
             showErrorSnackBar("Payment Failed",true)
-            var _addedFund=transactionDetails.amount!!.toDouble()
-            val decFormat=DecimalFormat("#.##")
-            val addedFund=decFormat.format(_addedFund).toDouble()
-            calculateFundAmount(addedFund)
+            updateTransactionDetails()
 
         }
         if (transactionDetails.transactionStatus==TransactionStatus.SUCCESS){
@@ -145,6 +142,24 @@ class AddFundActivity : BaseActivity(),PaymentStatusListener{
             transactionStatus)
         FireBasePaymentData().storeTransactionDetails(this,transactionData)
     }
+
+    //update transaction details on failure
+    fun updateTransactionDetails(){
+        val transactionData=TransactionData(
+            UPIId,
+            userId,
+            date,
+            UPIName,
+            UPITransactionID,
+            UPITransactionRefId,
+            amount,
+            UPIMerchantCode,
+            UPIDescription,
+            transactionType,
+            transactionStatus)
+        FireBasePaymentData().storeTransactionDetails(this,transactionData)
+    }
+
 
     fun getUserFundSuccess(userFund: UserFund){
         val decFormat=DecimalFormat("#.##")
