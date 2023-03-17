@@ -3,10 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@+id/nav_home">
-    <action
-        android:id="@+id/action_nav_to_navigation_home"
-        app:destination="@id/navigation_home"
-        />
 
     <fragment
         android:id="@+id/nav_home"
@@ -17,9 +13,9 @@
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.torrex.vcricket.fragmentsUI.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:name="com.torrex.vcricket.fragmentsUI.myContest.MyContestFragment"
+        android:label="@string/menu_my_contest"
+        tools:layout="@layout/my_contest_fragment" />
 
     <fragment
         android:id="@+id/nav_admin"
@@ -35,10 +31,10 @@
         />
 
     <fragment
-        android:id="@+id/navigation_account"
-        android:name="com.torrex.vcricket.fragmentsUI.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_my_contest"
+        android:name="com.torrex.vcricket.fragmentsUI.myContest.MyContestFragment"
+        android:label="@string/menu_my_contest"
+        tools:layout="@layout/my_contest_fragment" />
 
     <fragment
         android:id="@+id/navigation_notifications"

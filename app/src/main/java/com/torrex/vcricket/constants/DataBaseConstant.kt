@@ -2,12 +2,15 @@ package com.torrex.vcricket.constants
 
 object DataBaseConstant {
 
+
     //Table Name
     const val USERS:String="users"
     const val TRANSACTION_DATA="transactionData"
     const val USER_TRANSACTION_DATA="userTransactionData"
     const val USER_FUND="userFund"
     const val MATCH_CONTEST="matchContest"
+    const val MY_JOINED_CONTEST:String="my_joined_contest"
+
 
     //variable for the FireBase Storage for User
     const val ID:String="id"
@@ -39,5 +42,10 @@ object DataBaseConstant {
     const val BET_RATE_TEAM_2="contestTeam2BetPrice"
     const val BET_CONTEST_SEAT_LEFT="contestSeatLeft"
     const val BET_CONTEST_TOTAL_SEAT="contestTotalSeat"
+
+    //Constant for the field of MyJoinedContest
+    const val JOINED_CONTEST_ID:String="joinedContestId"
+    const val USER_JOINED_ID:String="userJoinedId"
+
 
 }

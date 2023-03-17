@@ -29,19 +29,12 @@ import com.torrex.vcricket.constants.GlobalConstant
 import com.torrex.vcricket.constants.GlobalFunctions
 import com.torrex.vcricket.databinding.ActivityMainDashboardDrawerBinding
 import com.torrex.vcricket.firebase.FireBaseUserDataBase
-import com.torrex.vcricket.fragmentsUI.adminAccount.AdminFragment
 import com.torrex.vcricket.fragmentsUI.home.HomeFragment
 import com.torrex.vcricket.models.User
 import com.torrex.vcricket.modules.BaseActivity
-import com.torrex.vcricket.roomDatabase.RoomDatabaseBuilder
-import com.torrex.vcricket.roomDatabase.VCricketDatabase
-import com.torrex.vcricket.roomDatabase.databaseHelper.VUserDatabaseHelper
-import com.torrex.vcricket.roomDatabase.roomModels.VUser
-import com.torrex.vcricket.sharedpreference.SharedPreferenceConstant
+
 import com.torrex.vcricket.sharedpreference.UserSharedPreference
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+
 
 class MainActivity : BaseActivity() {
 
@@ -72,12 +65,13 @@ class MainActivity : BaseActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home,R.id.nav_gallery,R.id.nav_admin, //drawer fragments
-                R.id.navigation_home, R.id.navigation_account, R.id.navigation_payment,R.id.navigation_notifications //bottom navigation fragments
+                R.id.navigation_home, R.id.nav_my_contest, R.id.navigation_payment,R.id.navigation_notifications //bottom navigation fragments
             ),drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavView.setupWithNavController(navController)
         navView.setupWithNavController(navController)
+
 
 
         //Get User Data From firestore

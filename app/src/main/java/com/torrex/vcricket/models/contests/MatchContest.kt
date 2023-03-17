@@ -16,5 +16,6 @@ data class MatchContest(
     val contestTotalSeat:Int=0,
     val contestSeatLeft:Int=0,
     val contestBetPrice:Int=0,
+    val matchTime: String ="",
     val contestId:String=""
 ):Parcelable

@@ -66,4 +66,17 @@ class FireBaseContest {
                 }
             }
     }
+
+    //GetContest Joined By User
+    fun getJoinedMatchContest(activity:Activity,contestId:String){
+        mFireStore.collection(DataBaseConstant.MATCH_CONTEST)
+            .whereEqualTo(DataBaseConstant.CONTEST_ID,contestId)
+            .get()
+            .addOnSuccessListener { document->
+
+            }
+            .addOnFailureListener { e->
+                Log.v("ERROR_GET_JOINED_MATCH",e.message.toString())
+            }
+    }
 }

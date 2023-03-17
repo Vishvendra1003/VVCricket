@@ -11,13 +11,16 @@
 
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_user_fund">UserFund</string>
+    <string name="menu_my_contest">MyContests</string>
     <string name="menu_admin_account">AdminAccount</string>
     <string name="title_home">Home</string>
     <string name="title_account">My Account</string>
     <string name="title_payment">Payment</string>
     <string name="title_notifications">Notifications</string>
     <string name="sign_in_phone">SignIn With Phone</string>
+    <string name="no_contest_joined">No Contest Available</string>
+
 
     <string name="login_title">Login</string>
     <string name="login_email">email</string>
@@ -63,5 +66,8 @@
     <string name="enter_total_contest_seat">Enter Total Contest Seat</string>
     <string name="join_and_pay">Pay and Join</string>
     <string name="join_contest_pay">Join Contest</string>
+    <string name="confirm_to_join_contest_title">Confirm To Join Contest</string>
+    <string name="confirm_to_join_contest">Are You Sure to Join Contest. Contest Charge will be duducted</string>
+    <string name="title_my_contest">MyContest</string>
 
 </resources>

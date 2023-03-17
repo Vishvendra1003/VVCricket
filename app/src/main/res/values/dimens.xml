@@ -25,9 +25,9 @@
     <dimen name="primary_card_control_margin">15dp</dimen>
     <dimen name="progress_bar_margin">10dp</dimen>
     <dimen name="card_match_home_image_size">50dp</dimen>
-    <dimen name="card_match_home_team_name_size">20sp</dimen>
-    <dimen name="card_match_home_league_title_size">20sp</dimen>
-    <dimen name="card_match_home_league_time_size">15sp</dimen>
+    <dimen name="card_match_home_team_name_size">15sp</dimen>
+    <dimen name="card_match_home_league_title_size">15sp</dimen>
+    <dimen name="card_match_home_league_time_size">10sp</dimen>
     <dimen name="contest_bet_title_size">15sp</dimen>
 
 
@@ -63,7 +63,7 @@
     <dimen name="card_elevation">6dp</dimen>
     <dimen name="card_payment_elevation">10dp</dimen>
 
-    <dimen name="card_match_home_team_code_size">30sp</dimen>
+    <dimen name="card_match_home_team_code_size">20sp</dimen>
     <dimen name="bet_prize_size_small">15dp</dimen>
     <dimen name="bet_margin_small">10dp</dimen>
     <dimen name="default_layout_margin">10dp</dimen>
@@ -78,10 +78,17 @@
     <dimen name="join_pay_team_title_text_size">30sp</dimen>
     <dimen name="join_and_pay_heading3_size">20sp</dimen>
     <dimen name="join_and_pay_heading2_size">30sp</dimen>
-    <dimen name="join_and_pay_toolbar_text_size">40sp</dimen>
+    <dimen name="join_and_pay_toolbar_text_size">30sp</dimen>
+    <dimen name="join_and_pay_user_fund_toolbar_size">20sp</dimen>
     <dimen name="spinner_text_size">20sp</dimen>
     <dimen name="edit_button_margin">20dp</dimen>
     <dimen name="log_out_padding">3dp</dimen>
+    <dimen name="toolbar_elevation">20dp</dimen>
+    <dimen name="card_match_home_league_team_width">60dp</dimen>
+    <dimen name="bottom_navigation_size">50dp</dimen>
+    <dimen name="contest_match_home_league_title_size">20sp</dimen>
+    <dimen name="contest_match_home_league_time_size">15sp</dimen>
+    <dimen name="contest_match_home_team_code_size">30sp</dimen>
 
 
 </resources>

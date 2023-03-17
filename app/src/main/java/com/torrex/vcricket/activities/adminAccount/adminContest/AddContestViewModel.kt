@@ -30,7 +30,7 @@ class AddContestViewModel(private val context: Context):ViewModel() {
     fun submitContest(betPrice:Int,contestSeat:Int){
         val matchContest=MatchContest(contestMatch.value!!.id,
         contestMatch.value!!.name,team1.value!!.img,team2.value!!.img,team1.value!!.name,team2.value!!.name,
-        1.0,1.0,contestSeat,contestSeat,betPrice)
+        1.0,1.0,contestSeat,contestSeat,betPrice,contestMatch.value!!.date)
 
         FireBaseContest().saveContestMatch(context as AddContestActivity,matchContest)
     }

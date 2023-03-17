@@ -9,15 +9,31 @@
     <color name="light_blue">#C5CAE9</color>
     <color name="blue">#734CC3</color>
     <color name="dark_blue">#303F9F</color>
-    <color name="light_primary_blue">#9FA8DA</color>
-    <color name="primary_blue">#3F51B5</color>
-    <color name="dark_primary_blue">#1A237E</color>
-    <color name="extra_light_primary_blue">#E8EAF6</color>
+    <color name="light_primary_blue">#4959B6</color>
+    <color name="primary_blue">#2139C1</color>
+    <color name="dark_primary_blue">#0720AF</color>
+    <color name="extra_light_primary_blue">#8595EF</color>
 
     <color name="light_primary_sky_blue">#8C9EFF</color>
     <color name="primary_sky_blue">#536DFE</color>
     <color name="dark_primary_sky_blue">#2644F1</color>
     <color name="extra_light_primary_sky_blue">#97A4F1</color>
+
+    <color name="theme_extra_dark_blue">#01051B</color>
+    <color name="theme_dark_blue">#1C2D88</color>
+    <color name="theme_blue">#2438A8</color>
+    <color name="theme_light_blue">#304FFE</color>
+    <color name="theme_extra_light_blue">#4C64EA</color>
+
+    <color name="light_yellow">#E8D15D</color>
+    <color name="yellow">#ECCC23</color>
+    <color name="dark_yellow">#E3C009</color>
+    <color name="extra_light_yellow">#EDDE90</color>
+
+    <color name="light_green">#72DD7A</color>
+    <color name="green">#25C530</color>
+    <color name="dark_green">#0B6312</color>
+    <color name="extra_light_green">#B0EFB5</color>
 
     <color name="light_grey">#838786</color>
     <color name="grey">#454747</color>
@@ -26,7 +42,6 @@
 
 
     <color name="red">#EA0A0A</color>
-    <color name="green">#43A047</color>
     <color name="app_background">#A8B4F3</color>
 
 

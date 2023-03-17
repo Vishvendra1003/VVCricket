@@ -21,8 +21,12 @@
         android:theme="@style/Theme.VCricket"
         tools:targetApi="31">
         <activity
-            android:name=".activities.joinContest.JoinAndPayContestActivity"
+            android:name=".activities.joinContest.MyContestActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.joinContest.JoinAndPayContestActivity"
+            android:exported="false"
+            />
         <activity
             android:name=".activities.adminAccount.adminContest.ContestListAdminActivity"
             android:exported="false">

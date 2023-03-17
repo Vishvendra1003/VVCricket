@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/theme_extra_light_blue"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -24,14 +25,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/card_gradient_opposite_background"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/rl_match_contest_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:background="@color/theme_dark_blue"
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:id="@+id/tv_match_contest_league_name"
@@ -41,29 +41,32 @@
                         android:layout_marginStart="@dimen/primary_text_box_margin"
                         android:layout_marginTop="@dimen/primary_text_box_margin"
                         android:layout_marginEnd="@dimen/primary_text_box_margin"
-                        android:layout_marginBottom="@dimen/primary_text_box_margin"
                         android:hint="Match Namehbhhjjhgjhgjhgggjcgjkgjkfg"
                         android:text="@{matchContestViewModel.match.name}"
+                        android:textStyle="italic"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/card_match_home_league_title_size" />
+                        android:textSize="@dimen/contest_match_home_league_title_size" />
+
                     <TextView
                         android:id="@+id/tv_match_contest_league_time"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:text="@{matchContestViewModel.MDate}"
-                        android:hint="date"
-                        android:layout_margin="@dimen/primary_text_box_margin"
-                        android:textSize="@dimen/card_match_home_league_time_size"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/white"/>
+                        android:layout_marginStart="@dimen/primary_text_box_margin"
+                        android:layout_marginTop="@dimen/primary_text_box_margin"
+                        android:layout_marginEnd="@dimen/primary_text_box_margin"
+                        android:layout_marginBottom="@dimen/primary_text_box_margin"
+                        android:hint="date"
+                        android:text="@{matchContestViewModel.MDate}"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/contest_match_home_league_time_size" />
 
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rl_match_contest"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/iv_match_contest_team_1_image"
@@ -78,12 +81,16 @@
                         android:id="@+id/tv_match_contest_team_1_code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="T1"
-                        android:layout_margin="@dimen/primary_card_control_margin"
-                        android:textColor="@color/white"
+                        android:layout_marginStart="@dimen/primary_card_control_margin"
+                        android:layout_marginTop="@dimen/primary_card_control_margin"
+                        android:layout_marginEnd="@dimen/primary_card_control_margin"
+                        android:layout_marginBottom="@dimen/primary_card_control_margin"
                         android:layout_toRightOf="@id/iv_match_contest_team_1_image"
+                        android:hint="T1"
                         android:text="@{matchContestViewModel.matchTeam1.shortname}"
-                        android:textSize="@dimen/card_match_home_team_code_size" />
+                        android:textColor="@color/dark_blue"
+                        android:textSize="@dimen/contest_match_home_team_code_size"
+                        android:textStyle="bold" />
                     <TextView
                         android:id="@+id/tv_match_contest_team_1_name"
                         android:layout_width="wrap_content"
@@ -91,24 +98,27 @@
                         android:text="@{matchContestViewModel.matchTeam1.name}"
                         android:textSize="@dimen/card_match_home_team_name_size"
                         android:hint="Team Name"
-                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textColor="@color/dark_blue"
                         android:layout_below="@id/iv_match_contest_team_1_image"
                         android:layout_alignParentStart="true"
-                        android:layout_marginStart="@dimen/primary_card_control_margin"
-                        />
+                        android:layout_marginStart="@dimen/primary_card_control_margin" />
 
 
                     <TextView
                         android:id="@+id/tv_match_contest_team_2_code"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="T2"
-                        android:textColor="@color/white"
-                        android:text="@{matchContestViewModel.matchTeam2.shortname}"
-                        android:textSize="@dimen/card_match_home_team_code_size"
+                        android:layout_marginStart="@dimen/primary_card_control_margin"
+                        android:layout_marginTop="@dimen/primary_card_control_margin"
+                        android:layout_marginEnd="@dimen/primary_card_control_margin"
+                        android:layout_marginBottom="@dimen/primary_card_control_margin"
                         android:layout_toLeftOf="@id/iv_match_contest_team_2_image"
-                        android:layout_margin="@dimen/primary_card_control_margin"
-                        />
+                        android:hint="T2"
+                        android:text="@{matchContestViewModel.matchTeam2.shortname}"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="@dimen/contest_match_home_team_code_size"
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/iv_match_contest_team_2_image"
@@ -126,8 +136,9 @@
                         android:layout_height="wrap_content"
                         android:text="@{matchContestViewModel.matchTeam2.name}"
                         android:textSize="@dimen/card_match_home_team_name_size"
+                        android:textStyle="bold"
                         android:hint="Team Name2"
-                        android:textColor="@color/white"
+                        android:textColor="@color/dark_blue"
                         android:layout_below="@id/iv_match_contest_team_1_image"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="@dimen/primary_card_control_margin"
