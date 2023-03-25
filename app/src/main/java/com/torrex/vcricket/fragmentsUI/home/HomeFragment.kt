@@ -22,7 +22,7 @@ import com.torrex.vcricket.sharedpreference.MatchSharedPreference
 
 class HomeFragment : BaseFragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding:FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private var currentMatchList:CurrentMatchModel?=null
     override fun onCreateView(
@@ -72,7 +72,6 @@ class HomeFragment : BaseFragment() {
             binding.rvHome.visibility=View.GONE
             binding.tvNoMatch.visibility=View.VISIBLE
         }
-
 
         hideProgressDialog()
     }

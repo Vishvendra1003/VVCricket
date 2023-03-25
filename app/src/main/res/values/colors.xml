@@ -6,43 +6,64 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="light_blue">#C5CAE9</color>
-    <color name="blue">#734CC3</color>
-    <color name="dark_blue">#303F9F</color>
-    <color name="light_primary_blue">#4959B6</color>
+    <!--Theme Color-->
+    <color name="extra_light_primary_blue">#D0BCFF</color>
+    <color name="light_primary_blue">#4F378B</color>
+    <color name="light_blue">#6750A4</color>
+    <color name="blue">#381E72</color>
+    <color name="dark_blue">#21005D</color>
     <color name="primary_blue">#2139C1</color>
     <color name="dark_primary_blue">#0720AF</color>
-    <color name="extra_light_primary_blue">#8595EF</color>
+
 
     <color name="light_primary_sky_blue">#8C9EFF</color>
     <color name="primary_sky_blue">#536DFE</color>
     <color name="dark_primary_sky_blue">#2644F1</color>
     <color name="extra_light_primary_sky_blue">#97A4F1</color>
 
-    <color name="theme_extra_dark_blue">#01051B</color>
-    <color name="theme_dark_blue">#1C2D88</color>
-    <color name="theme_blue">#2438A8</color>
-    <color name="theme_light_blue">#304FFE</color>
-    <color name="theme_extra_light_blue">#4C64EA</color>
+    <color name="theme_extra_dark_gray">#1C1C1C</color>
+    <color name="theme_dark_gray">#2B2B2B</color>
+    <color name="theme_gray">#3C3E40</color>
+    <color name="theme_light_gray">#4E5255</color>
+    <color name="theme_extra_light_gray">#787777</color>
+    <color name="theme_appbar_color_gray">#666866</color>
+    <color name="theme_background_color_gray">#888C85</color>
+    <color name="theme_appbar_color">#666866</color>
+    <color name="theme_background_color">#888C85</color>
 
-    <color name="light_yellow">#E8D15D</color>
-    <color name="yellow">#ECCC23</color>
-    <color name="dark_yellow">#E3C009</color>
-    <color name="extra_light_yellow">#EDDE90</color>
+
+
+
+    <color name="theme_extra_dark_blue">#303F9F</color>
+    <color name="theme_dark_blue">#0432E8</color>
+    <color name="theme_blue">#0336FC</color>
+    <color name="theme_light_blue">#325AF8</color>
+    <color name="theme_extra_light_blue">#627FEF</color>
+    <color name="theme_appbar_color_blue">#3C60ED</color>
+    <color name="theme_background_color_blue">#F1EEE0</color>
+
+    <color name="light_yellow">#F6DC2E</color>
+    <color name="yellow">#FFDE03</color>
+    <color name="dark_yellow">#BCA302</color>
+    <color name="extra_light_yellow">#F6E995</color>
 
     <color name="light_green">#72DD7A</color>
     <color name="green">#25C530</color>
     <color name="dark_green">#0B6312</color>
     <color name="extra_light_green">#B0EFB5</color>
 
-    <color name="light_grey">#838786</color>
-    <color name="grey">#454747</color>
-    <color name="dark_grey">#302F2F</color>
-    <color name="extra_light_grey">#BCB7B7</color>
+    <color name="light_gray">#838786</color>
+    <color name="gray">#454747</color>
+    <color name="dark_gray">#302F2F</color>
+    <color name="extra_light_gray">#BCB7B7</color>
 
 
     <color name="red">#EA0A0A</color>
+    <color name="light_red">#EA4747</color>
+    <color name="extra_light_red">#ECB0B0</color>
     <color name="app_background">#A8B4F3</color>
+
+
 
 
 </resources>

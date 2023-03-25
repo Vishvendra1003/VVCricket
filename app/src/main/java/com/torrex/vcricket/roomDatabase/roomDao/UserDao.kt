@@ -1,10 +1,6 @@
 package com.torrex.vcricket.roomDatabase.roomDao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.RoomDatabase
+import androidx.room.*
 import com.torrex.vcricket.models.User
 import com.torrex.vcricket.roomDatabase.roomModels.VUser
 
@@ -21,6 +17,9 @@ interface UserDao {
     suspend fun insertUser(vUser:VUser)
     @Delete
     suspend fun deleteUser(vUser:VUser)
+
+    @Update
+    suspend fun updateUser(vUser: VUser)
 
 
 }

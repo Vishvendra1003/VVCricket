@@ -60,7 +60,7 @@
             android:layout_below="@id/iv_team1_match_contest"
             android:layout_marginStart="@dimen/bet_margin_small"
             android:layout_marginTop="@dimen/bet_margin_small"
-            android:background="@color/red"
+            android:background="@color/extra_light_red"
             android:elevation="@dimen/card_elevation"
             android:textColor="@color/white"
             android:text="500" />
@@ -116,7 +116,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="@dimen/bet_margin_small"
             android:layout_marginEnd="@dimen/bet_margin_small"
-            android:background="@color/red"
+            android:background="@color/extra_light_red"
             android:elevation="@dimen/card_elevation"
             android:textColor="@color/white"
             android:text="500" />

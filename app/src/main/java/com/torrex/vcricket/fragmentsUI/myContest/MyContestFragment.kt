@@ -1,5 +1,6 @@
 package com.torrex.vcricket.fragmentsUI.myContest
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,12 +10,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.torrex.vcricket.activities.joinContest.MyContestActivity
+import com.torrex.vcricket.activities.matches.MatchContestActivity
+import com.torrex.vcricket.constants.GlobalConstant
 import com.torrex.vcricket.constants.GlobalFunctions
 import com.torrex.vcricket.databinding.MyContestFragmentBinding
 import com.torrex.vcricket.firebase.FireBaseContest
 import com.torrex.vcricket.firebase.FireBaseJoinedContestDatabase
 import com.torrex.vcricket.models.contests.MatchContest
 import com.torrex.vcricket.models.contests.MyJoinedContest
+import com.torrex.vcricket.sharedpreference.MatchSharedPreference
 import com.torrex.vcricket.sharedpreference.UserSharedPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -72,6 +77,9 @@ MyContestFragment : Fragment() {
             adapter.setOnClickListener(object:MyContestListAdapter.OnItemClickListener{
                 override fun onItemClicked(position: Int, contest: MyJoinedContest) {
                     Log.v("CONTEST_ITEM","Contest at${position} clicked")
+                    MatchSharedPreference(requireContext()).saveMyJoinedContest(contest)
+                    val intent= Intent(requireActivity(), MyContestActivity::class.java)
+                    startActivity(intent)
                 }
             })
         }

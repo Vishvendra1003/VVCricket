@@ -8,7 +8,7 @@
             <!-- SHADOW -->
             <item>
                 <shape>
-                    <solid android:color="@color/extra_light_primary_blue"/>
+                    <solid android:color="@color/extra_light_gray"/>
                     <corners android:radius="50dp"/>
                 </shape>
             </item>
@@ -21,8 +21,8 @@
                     <adding android:bottom="5dp"/>
                     <gradient
                         android:angle="360"
-                        android:startColor="@color/light_primary_blue"
-                        android:endColor="@color/dark_primary_blue"
+                        android:startColor="@color/theme_gray"
+                        android:endColor="@color/theme_extra_light_gray"
                         android:type="linear"
                         />
                     <corners android:radius="50dp"/>

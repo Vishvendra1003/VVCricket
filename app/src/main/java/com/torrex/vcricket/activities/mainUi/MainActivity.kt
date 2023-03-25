@@ -2,7 +2,9 @@ package com.torrex.vcricket.activities.mainUi
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -23,6 +25,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.collection.LLRBNode.Color
 import com.torrex.vcricket.R
 import com.torrex.vcricket.activities.profileUi.ProfileActivity
 import com.torrex.vcricket.constants.GlobalConstant
@@ -58,9 +61,9 @@ class MainActivity : BaseActivity() {
         val bottomNavView: BottomNavigationView =binding.appBarMain.navViewBottom
         val navView: NavigationView =binding.navView
 
+
         //nav controller for fragment in activity
         val navController = findNavController(R.id.nav_host_fragment_content_main)
-
         //appBarConfiguration for all fragment Id and drawer layout
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -68,6 +71,7 @@ class MainActivity : BaseActivity() {
                 R.id.navigation_home, R.id.nav_my_contest, R.id.navigation_payment,R.id.navigation_notifications //bottom navigation fragments
             ),drawerLayout
         )
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavView.setupWithNavController(navController)
         navView.setupWithNavController(navController)

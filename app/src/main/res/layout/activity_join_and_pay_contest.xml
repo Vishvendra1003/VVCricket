@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/light_blue"
+        android:background="@color/theme_background_color"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +18,7 @@
                 android:id="@+id/toolbar_join_and_pay"
                 style="@style/Widget.MaterialComponents.Toolbar"
                 android:layout_width="match_parent"
-                android:background="@color/theme_dark_blue"
+                android:background="@color/theme_appbar_color"
                 android:layout_height="?actionBarSize">
 
                 <LinearLayout
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/primary_card_layout_margin"
             app:cardElevation="@dimen/card_payment_elevation"
-            app:cardBackgroundColor="@color/extra_light_yellow">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"

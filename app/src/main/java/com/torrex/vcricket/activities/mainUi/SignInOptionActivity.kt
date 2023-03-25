@@ -107,6 +107,7 @@ class SignInOptionActivity() : AppCompatActivity() {
     }
     private fun saveUserToDatabase(user: VUser) {
         db= RoomDatabaseBuilder.getInstance(this)
+
         GlobalScope.launch(){
             VUserDatabaseHelper(db).saveUser(user)
             //TODO("change user to vUser Type for roomdatabase")

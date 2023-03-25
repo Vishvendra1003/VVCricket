@@ -89,6 +89,7 @@
     <dimen name="contest_match_home_league_title_size">20sp</dimen>
     <dimen name="contest_match_home_league_time_size">15sp</dimen>
     <dimen name="contest_match_home_team_code_size">30sp</dimen>
+    <dimen name="card_elevation_high">10dp</dimen>
 
 
 </resources>

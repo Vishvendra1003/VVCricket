@@ -37,7 +37,7 @@ open class BaseFragment():Fragment() {
     }
 
 
-    fun sendNotification(context: Context,msg:String,pendingIntent: PendingIntent){
+    fun  sendNotification(context: Context,msg:String,pendingIntent: PendingIntent){
         registerNotificationChannel(context)
         val notifyBuilder= NotificationCompat.Builder(context,CHANNEL_ID)
             .setContentTitle("VCricket").setContentText(msg)

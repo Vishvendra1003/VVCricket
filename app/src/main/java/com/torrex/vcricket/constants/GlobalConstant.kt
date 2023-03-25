@@ -2,7 +2,7 @@ package com.torrex.vcricket.constants
 
 object GlobalConstant {
     val ADMIN_USER= arrayOf("XWnQqkRjpbUiY4srlpHKMRvG5Ph1","Mxs5ZvQ21JOKElLkXjzJnWxvVrF3")
-    val SPLASH_SCREEN_DELAY:Long=2000
+    val SPLASH_SCREEN_DELAY:Long=4000
 
     //Request Code --------------
     const val PICK_IMAGE_REQUEST_CODE=1
@@ -20,6 +20,8 @@ object GlobalConstant {
 
     val CONTEST_TO_JOIN="contest_to_join"
     val CONTEST_TEAM_SELECTED_TO_JOIN="contest_team_selected_to_join"
+
+    val MY_JOINED_CONTEST_DATA="my_joined_contest_data"
 
     //Constant String Values
     const val MALE:String="male"

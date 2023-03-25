@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.torrex.vcricket.R
 import com.torrex.vcricket.activities.mainUi.LoginActivity
 import com.torrex.vcricket.activities.mainUi.MainActivity
+import com.torrex.vcricket.activities.payment.AddFundActivity
 import com.torrex.vcricket.constants.DataBaseConstant
 import com.torrex.vcricket.constants.GlobalConstant
 import com.torrex.vcricket.constants.GlobalFunctions
@@ -70,6 +71,7 @@ class ProfileActivity : BaseActivity(),
         genderSpinnerAdaptor.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item)
         binding.spinnerProfileGender.adapter=genderSpinnerAdaptor
         binding.spinnerProfileGender.onItemSelectedListener=this
+
 
     }
 

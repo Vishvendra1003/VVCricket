@@ -20,7 +20,7 @@
                 android:id="@+id/toolbar_content_main"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/dark_primary_blue"
+                android:background="@color/theme_appbar_color"
                 app:popupTheme="@style/Theme.VCricket.PopupOverlay" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -41,6 +41,9 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/bottom_navigation_size"
             android:layout_gravity="bottom"
+            app:itemTextColor="@color/white"
+            app:itemBackground="@color/gray"
+            app:itemIconTint="@color/white"
             app:menu="@menu/bottom_nav_menu_main"
             android:layout_alignParentBottom="true"/>
 
