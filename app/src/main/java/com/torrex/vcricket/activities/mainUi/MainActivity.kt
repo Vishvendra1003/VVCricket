@@ -42,7 +42,7 @@ import com.torrex.vcricket.sharedpreference.UserSharedPreference
 class MainActivity : BaseActivity() {
 
     private lateinit var appBarConfiguration:AppBarConfiguration
-    private lateinit var binding: ActivityMainDashboardDrawerBinding
+    private lateinit var binding:ActivityMainDashboardDrawerBinding
     private var mUser:User?=null
 
 
