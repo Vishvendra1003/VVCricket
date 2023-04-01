@@ -25,6 +25,7 @@ import com.torrex.vcricket.sharedpreference.UserSharedPreference
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.text.DecimalFormat
 
 class JoinAndPayContestActivity : BaseActivity() {
 
@@ -33,6 +34,8 @@ class JoinAndPayContestActivity : BaseActivity() {
     private var mUserFund=0.0
     private var matchContest:MatchContest?=null
     private var teamSelected=0
+    private var betPriceForTeam1=1.0
+    private var betPriceForTeam2=1.0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=DataBindingUtil.setContentView(this,R.layout.activity_join_and_pay_contest)
@@ -44,6 +47,8 @@ class JoinAndPayContestActivity : BaseActivity() {
 
         if (intent.hasExtra(GlobalConstant.CONTEST_TO_JOIN)){
             matchContest=intent.getParcelableExtra(GlobalConstant.CONTEST_TO_JOIN)
+            betPriceForTeam1=matchContest!!.contestTeam1BetPrice
+            betPriceForTeam2=matchContest!!.contestTeam2BetPrice
         }
         if (intent.hasExtra(GlobalConstant.CONTEST_TEAM_SELECTED_TO_JOIN)){
             teamSelected=intent.getIntExtra(GlobalConstant.CONTEST_TEAM_SELECTED_TO_JOIN,0)!!
@@ -122,12 +127,13 @@ class JoinAndPayContestActivity : BaseActivity() {
 
     //Fund to be updated in the database
     fun funUpdatedSuccessfully(){
-        //TODO("Add transaction details for joining contest create new table for contest")
+        //TODO("Score Functionality for the team")
+
         val team1Score:String=""
         val team2Score:String=""
         val matchStatus:String="Finished"
         val userWinStatus:String="WON"
-        //TODO("Score Functionality for the team")
+
         val myJoinedContest=MyJoinedContest(
             matchContest!!.matchId,matchContest!!.contestId,
             matchContest!!.contestName, matchContest!!.matchTime,
@@ -135,21 +141,19 @@ class JoinAndPayContestActivity : BaseActivity() {
             matchContest!!.contestTeam1Img,matchContest!!.contestTeam2Img,
             team1Score,team2Score,
             teamSelected,matchContest!!.contestBetPrice,
-            matchContest!!.contestTeam1BetPrice,matchContest!!.contestTeam2BetPrice,
+            betPriceForTeam1,betPriceForTeam2,
             matchStatus,mUserId,userWinStatus)
 
         FireBaseJoinedContestDatabase().saveJoinedContest(this,myJoinedContest)
+
     }
 
     //Adding the bet Placed for the contest
     private fun addBetToTeam(contestId:String,contestSeatLeft:Int) {
         val betRateHashMap=HashMap<String,Any>()
-        val betRateTeam1=1.1
-        val betRateTeam2=2.2
-        val mContestSeatLeft = contestSeatLeft-1
-        betRateHashMap[DataBaseConstant.BET_RATE_TEAM_1]=betRateTeam1
-        betRateHashMap[DataBaseConstant.BET_RATE_TEAM_2]=betRateTeam2
-        betRateHashMap[DataBaseConstant.BET_CONTEST_SEAT_LEFT]=mContestSeatLeft
+        betRateHashMap[DataBaseConstant.BET_RATE_TEAM_1]=betPriceForTeam1
+        betRateHashMap[DataBaseConstant.BET_RATE_TEAM_2]=betPriceForTeam2
+        betRateHashMap[DataBaseConstant.BET_CONTEST_SEAT_LEFT]=contestSeatLeft
 
         FireBaseContest().updateContestMatch(this,contestId,betRateHashMap)
     }
@@ -171,8 +175,39 @@ class JoinAndPayContestActivity : BaseActivity() {
 
     fun joinedContestSavedSuccessfully(joinedContestId:String){
         Log.v("JOINED_CONTEST_ID",joinedContestId.toString())
-        val contestId=matchContest!!.contestId
-        val seatLeft=matchContest!!.contestSeatLeft
-        addBetToTeam(contestId,seatLeft)
+        FireBaseJoinedContestDatabase().getJoinedContest(this,matchContest!!.contestId)
+
     }
+
+    fun getContestListSuccess(contestList:ArrayList<MyJoinedContest>){
+        val contestId=matchContest!!.contestId
+        val seatLeft=matchContest!!.contestSeatLeft-1
+        var team1SelectedCount=0
+        var team2SelectedCount=0
+        var factor1=1
+        var factor2=1
+
+        for(i in contestList){
+            if (i.teamSelected==1){
+                team1SelectedCount += 1
+            }
+            else{
+                team2SelectedCount += 1
+            }
+        }
+
+        if (team1SelectedCount!=0 && team2SelectedCount!=0){
+            factor1=team1SelectedCount
+            factor2=team2SelectedCount
+            val decimalFormat=DecimalFormat("#.##")
+            val _betPriceForTeam1=((matchContest!!.contestBetPrice*(matchContest!!.contestTotalSeat-seatLeft))*0.8)/factor1
+            val _betPriceForTeam2=((matchContest!!.contestBetPrice*(matchContest!!.contestTotalSeat-seatLeft))*0.8)/factor2
+
+            betPriceForTeam1=decimalFormat.format(_betPriceForTeam1).toDouble()
+            betPriceForTeam2=decimalFormat.format(_betPriceForTeam2).toDouble()
+
+        }
+            addBetToTeam(contestId,seatLeft)
+        }
+
 }

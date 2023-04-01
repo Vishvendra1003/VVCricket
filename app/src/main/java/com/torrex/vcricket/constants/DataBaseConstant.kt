@@ -46,6 +46,7 @@ object DataBaseConstant {
     //Constant for the field of MyJoinedContest
     const val JOINED_CONTEST_ID:String="joinedContestId"
     const val USER_JOINED_ID:String="userJoinedId"
+    const val CONTEST_ID_JOINED_CONTEST_ID:String="contestId"
 
 
 }

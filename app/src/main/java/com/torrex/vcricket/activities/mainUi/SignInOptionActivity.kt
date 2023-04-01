@@ -21,6 +21,7 @@ import com.torrex.vcricket.roomDatabase.databaseHelper.VUserDatabaseHelper
 import com.torrex.vcricket.roomDatabase.roomModels.VUser
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.Arrays
 
 class SignInOptionActivity() : AppCompatActivity() {
 
@@ -28,7 +29,6 @@ class SignInOptionActivity() : AppCompatActivity() {
     private lateinit var db: VCricketDatabase
 
     private val mFirebaseAuth=FirebaseAuth.getInstance()
-    private val authList:ArrayList<AuthUI.IdpConfig> = ArrayList()
     private var signInLauncher=registerForActivityResult(
         FirebaseAuthUIActivityResultContract()){it ->
         this.signInResult(it)
@@ -78,7 +78,7 @@ class SignInOptionActivity() : AppCompatActivity() {
     private fun signInUserMethod() {
         //ArrayList for the User method for signIn
         //authList.add(AuthUI.IdpConfig.EmailBuilder().build())
-        authList.add(AuthUI.IdpConfig.PhoneBuilder().build())
+        val authList=listOf(AuthUI.IdpConfig.PhoneBuilder().build())
 
         //SignInIntent for the FirebaseUI--------------------
         val signInIntent=AuthUI.getInstance().createSignInIntentBuilder()

@@ -78,7 +78,13 @@ class LoginActivity : BaseActivity(),View.OnClickListener {
                     FireBaseUserDataBase().getUserFireStore(this,userId)
 
                 }
+
+            }.addOnFailureListener {
+                hideProgressDialog()
+                Toast.makeText(this,"Logged In Fail!!!", Toast.LENGTH_LONG).show()
+
             }
+
     }
 
     //Method to check the required field filled or not

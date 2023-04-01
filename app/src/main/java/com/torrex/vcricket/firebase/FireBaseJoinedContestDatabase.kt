@@ -48,4 +48,26 @@ class FireBaseJoinedContestDatabase {
                 Log.v("ERROR_GET_CONTEST",e.message.toString())
             }
     }
+
+    fun getJoinedContest(activity:Activity,contestId:String){
+        mFireStore.collection(DataBaseConstant.MY_JOINED_CONTEST)
+            .whereEqualTo(DataBaseConstant.CONTEST_ID_JOINED_CONTEST_ID,contestId)
+            .get()
+            .addOnSuccessListener { document->
+                val joinedContestList=ArrayList<MyJoinedContest>()
+                for(i in document.documents){
+                    val joinedContest=i.toObject(MyJoinedContest::class.java)
+                    joinedContestList.add(joinedContest!!)
+                }
+                when(activity){
+                    is JoinAndPayContestActivity->
+                        activity.getContestListSuccess(joinedContestList)
+                }
+
+
+            }
+            .addOnFailureListener { e->
+                Log.v("ERROR_GET_CONTEST",e.message.toString())
+            }
+    }
 }

@@ -1,7 +1,7 @@
 package com.torrex.vcricket.constants
 
 object GlobalConstant {
-    val ADMIN_USER= arrayOf("XWnQqkRjpbUiY4srlpHKMRvG5Ph1","Mxs5ZvQ21JOKElLkXjzJnWxvVrF3")
+    val ADMIN_USER= arrayOf("XWnQqkRjpbUiY4srlpHKMRvG5Ph1","Mxs5ZvQ21JOKElLkXjzJnWxvVrF3","E6eJKkoiZMUP5zR7KHJAAkSA78A2","prhMOH17yGSBOdUUivl7qvAbLgp1")
     val SPLASH_SCREEN_DELAY:Long=3000
 
     //Request Code --------------

@@ -15,15 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "321250983182-448mer5c6qcrhpfo08ipklco0o0hv3n9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.torrex.vcricket",
-            "certificate_hash": "86ff6d1f1704643739799d4c03011621fbebf186"
-          }
-        },
-        {
-          "client_id": "321250983182-s7ol39k39pnma0p4brjhiaj6etne6g5m.apps.googleusercontent.com",
+          "client_id": "321250983182-3i8goe5kuovif2c8k27mmpmgqmmumgf6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.torrex.vcricket",

@@ -32,11 +32,16 @@ import com.torrex.vcricket.constants.GlobalConstant
 import com.torrex.vcricket.constants.GlobalFunctions
 import com.torrex.vcricket.databinding.ActivityMainDashboardDrawerBinding
 import com.torrex.vcricket.firebase.FireBaseUserDataBase
+import com.torrex.vcricket.firebase.FirebaseGlobalFunction
+import com.torrex.vcricket.firebase.FirebaseStoreClass
 import com.torrex.vcricket.fragmentsUI.home.HomeFragment
 import com.torrex.vcricket.models.User
 import com.torrex.vcricket.modules.BaseActivity
 
 import com.torrex.vcricket.sharedpreference.UserSharedPreference
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 class MainActivity : BaseActivity() {
@@ -79,7 +84,12 @@ class MainActivity : BaseActivity() {
 
 
         //Get User Data From firestore
+        CoroutineScope(Dispatchers.IO).launch {
+            val token=FirebaseGlobalFunction().getRefreshedToken()
+            Log.v("FireBaseMainToken",token.toString())
+        }
         getUserData()
+
 
     }
 

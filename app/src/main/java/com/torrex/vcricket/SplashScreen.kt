@@ -26,7 +26,7 @@ class SplashScreen : AppCompatActivity() {
                 startActivity(Intent(this,MainActivity::class.java))
             }
             else{
-                startActivity(Intent(this, SignInOptionActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
             }
         },GlobalConstant.SPLASH_SCREEN_DELAY)
     }
